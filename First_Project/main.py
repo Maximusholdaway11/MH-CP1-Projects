@@ -1,3 +1,5 @@
 #Maxwell Holdaway, First Programming Project
+import random
 
-print("Hello World")
+num = random.randint(1, 20)
+print("Hello World", num)
