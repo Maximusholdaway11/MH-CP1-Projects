@@ -1,4 +1,4 @@
-#Max Holdaway Hello World
+#Max Holdaway, Hello World
 
 name = input("What is your name?: ")
 
