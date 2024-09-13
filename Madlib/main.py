@@ -25,4 +25,4 @@ Word5 = input("Give me a fifth word to use: ")
 print("")
 
 #Writing out the story for the user to see
-print(f"In a normal city {Word1} lived a peaceful live. Then all of the sudden {Word2} appeared and things began to change! {Word2} started to make {Word3} appear randomly! They also had to make {Word4} appear. In the end {Word5} put an end to {Word2} and {Word1} continued livingapp normally.")
+print(f"In a normal city {Word1} lived a peaceful live. Then all of the sudden {Word2} appeared and things began to change! {Word2} started to make {Word3} appear randomly! They also had to make {Word4} appear. In the end {Word5} put an end to {Word2} and {Word1} continued living normally.")
