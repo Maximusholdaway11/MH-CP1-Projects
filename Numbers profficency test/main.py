@@ -1,13 +1,17 @@
 #Max Holaway Numbers profficency test
 
+#Explaining what the program does
 print("This is an arithmetic only calculator with a few exceptions namely: Modulo, Exponents, and Rounded Division")
 
+#Putting a space between the starting message and input messages
 print("")
 
+#Getting the numbers used for equations
 NumberTerm1 = int(input("Type the first number to be used: "))
 
 NumberTerm2 = int(input("Type the second number to be used: "))
 
+#All the functions and variables used for the calculator
 def Addition(x, y):
     z = x + y
     return z
@@ -50,12 +54,16 @@ def QuotientDivision(x, y):
 
 QuotientProduct = QuotientDivision(NumberTerm1, NumberTerm2)
 
+#Another space between messages
 print("")
 
+#Asking the user to tell the program which type of arithmetic they want to use and or which exception as well
 Arithmetic = int(input("Tell me which type of arithmetic you want to calculate or which execption, Addition is 1, Subtraction is 2, and Multiplication is 3, Division is 4, Exponents is 5, Modular division is 6, and Quotient Division is 7: "))
 
+#Another space between messages
 print("")
 
+#Deciding based on input which type of arithemtic or exception to print out
 if Arithmetic == 1:
     print(f"{Solution}")
 elif Arithmetic == 2:
