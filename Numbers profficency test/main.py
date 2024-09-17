@@ -54,8 +54,6 @@ Arithmetic = int(input("Tell me which type of arithmetic you want to calculate o
 
 print("")
 
-round(DividedProduct, 2)
-
 if Arithmetic == 1:
     print(f"{Solution}")
 elif Arithmetic == 2:
