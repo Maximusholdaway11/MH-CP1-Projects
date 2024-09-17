@@ -1,4 +1,4 @@
-#Max Holaway Numbers profficency test
+#Max Holaway Numbers Simple calculator
 
 #Explaining what the program does
 print("This is an arithmetic only calculator with a few exceptions namely: Modulo, Exponents, and Rounded Division")
