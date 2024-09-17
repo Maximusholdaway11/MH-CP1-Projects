@@ -8,6 +8,10 @@ NumberTerm1 = float(input("Type the first number to be used: "))
 
 NumberTerm2 = float(input("Type the second number to be used: "))
 
+int(NumberTerm1)
+
+int(NumberTerm2)
+
 def Addition(x, y):
     z = x + y
     return z
@@ -49,6 +53,8 @@ def QuotientDivision(x, y):
     return z
 
 QuotientProduct = QuotientDivision(NumberTerm1, NumberTerm2)
+
+print("")
 
 Arithmetic = int(input("Tell me which type of arithmetic you want to calculate or which execption, Addition is 1, Subtraction is 2, and Multiplication is 3, Division is 4, Exponents is 5, Modular division is 6, and Quotient Division is 7: "))
 
