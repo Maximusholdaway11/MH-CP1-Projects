@@ -4,13 +4,9 @@ print("This is an arithmetic only calculator with a few exceptions namely: Modul
 
 print("")
 
-NumberTerm1 = float(input("Type the first number to be used: "))
+NumberTerm1 = int(input("Type the first number to be used: "))
 
-NumberTerm2 = float(input("Type the second number to be used: "))
-
-int(NumberTerm1)
-
-int(NumberTerm2)
+NumberTerm2 = int(input("Type the second number to be used: "))
 
 def Addition(x, y):
     z = x + y
