@@ -1,6 +1,8 @@
 #Max Holdaway Fibonnaci Sequence
 
-print("This is a Fibonnaci Sequence Calculator. (If you start it with anything bigger than 1 it will break as well as it will also stop at 89)")
+print("This is a Fibonnaci Sequence Calculator. (If you start it with anything bigger than 1 it will partially break and when its bigger than 3 it will completely break as well as it will also stop at 89)")
+
+print("")
 
 OneZeroisThere = False
 
