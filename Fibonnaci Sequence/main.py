@@ -1,10 +1,37 @@
 #Max Holdaway Fibonnaci Sequence
 
-print("This is a Fibonnaci Sequence Calculator.")
+print("This is a Fibonnaci Sequence Calculator. (If you start it with anything bigger than 1 it will break as well as it will also stop at 89)")
+
+OneZeroisThere = False
+
+ZeroVariable = 0
 
 StartingValue = int(input("Please give me a starting value for the sequence: "))
 
-while StartingValue < 100:
-    if StartingValue == StartingValue:
-        StartingValue + 1
+while StartingValue < 13:
+    if StartingValue == 0:
+        print(StartingValue)
+        StartingValue = StartingValue + 1
+        OneZeroisThere = True
+    elif StartingValue == 0 + 1:
+        if OneZeroisThere == False:
+            print(ZeroVariable)
+        print(StartingValue)
+        print(StartingValue)
+        StartingValue = StartingValue + 1
+    elif StartingValue == 1 + 1:
+        print(StartingValue)
+        StartingValue = StartingValue + 1
+        print(StartingValue)
+    elif StartingValue == 2 + 1:
+        StartingValue = StartingValue + 2
+        print(StartingValue)
+    elif StartingValue == 3 + 2:
+        StartingValue = StartingValue + 3
+        print(StartingValue)
+    elif StartingValue == 5 + 3:
+        StartingValue = StartingValue + 5
+        print(StartingValue)
+    elif StartingValue == 8 + 5:
+        StartingValue = StartingValue + 8
         print(StartingValue)
