@@ -8,7 +8,9 @@ ZeroVariable = 0
 
 StartingValue = int(input("Please give me a starting value for the sequence: "))
 
-while StartingValue < 13:
+print("")
+
+while StartingValue < 89:
     if StartingValue == 0:
         print(StartingValue)
         StartingValue = StartingValue + 1
@@ -34,4 +36,13 @@ while StartingValue < 13:
         print(StartingValue)
     elif StartingValue == 8 + 5:
         StartingValue = StartingValue + 8
+        print(StartingValue)
+    elif StartingValue == 13 + 8:
+        StartingValue = StartingValue + 13
+        print(StartingValue)
+    elif StartingValue == 21 + 13:
+        StartingValue = StartingValue + 21
+        print(StartingValue)
+    elif StartingValue == 34 + 21:
+        StartingValue = StartingValue + 34
         print(StartingValue)
