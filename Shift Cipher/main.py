@@ -10,12 +10,14 @@ ShiftingNumber = int(input("Please give me the number of times you want to shift
 
 print("")
 
-MessageList = []
+EmptyListVar = []
 
-def ShiftCrypting(Message, UnCryptedMessageVar):
-    for character in Message:
+def ShiftCrypting(UnCryptedMessageVar, ShiftingVariable, x, EmptyList):
+    for character in UnCryptedMessageVar:
         x = ord(character)
-        x = x + ShiftingNumber
-        UnCryptedMessageVar.append(chr(x))
+        x = x + ShiftingVariable
+        EmptyList.append(chr(x))
+        UnCryptedMessageVar = "".join(EmptyList)
     return UnCryptedMessageVar
 
+print(ShiftCrypting(UnCryptedMessage, ShiftingNumber, "", EmptyListVar))
