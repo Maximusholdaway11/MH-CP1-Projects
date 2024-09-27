@@ -10,15 +10,23 @@ EmptyStringVar = ""
 
 OriginalMessage = str(input("Please give me a word to make anagrams from: "))
 
-OriginalMessage = OriginalMessage.split(EmptyStringVar)
-
-print(OriginalMessage)
-
 EmptyListVar = []
 
 def AnagramMaker(NewMessage):
+    NewMessage = list(NewMessage)
     random.shuffle(NewMessage)
     NewMessage = "".join(NewMessage)
     return NewMessage
 
-print(AnagramMaker(OriginalMessage))
+print("")
+
+x = 0
+
+ListOfAnagrams = []
+
+while x < 10:
+    x = x + 1
+    TempAppendVar = (AnagramMaker(OriginalMessage))
+    ListOfAnagrams.append(TempAppendVar)
+
+print(ListOfAnagrams)
