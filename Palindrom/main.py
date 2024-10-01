@@ -2,24 +2,34 @@
 
 print("This is a palindrom checker.")
 
+print("")
+
 WordBeingChecked = input("Please give me a word to be checked: ")
 
-if WordBeingChecked == "Mom" or "mom":
+print("")
+
+if WordBeingChecked in ["Mom", "mom"]:
     print("This is a palindrom")
 else:
     print("This isn't a palindrom")
 
-if WordBeingChecked == "Dad" or "dad":
+if WordBeingChecked in ["Dad", "dad"]:
     print("This is a palindrom")
-elif WordBeingChecked == "a" or "A":
+
+if WordBeingChecked in ["a", "A"]:
     print("This is a palindrom")
-elif WordBeingChecked == "Racecar" or "racecar":
+
+if WordBeingChecked in ["Racecar", "racecar"]:
     print("This is a palindrom")
-elif WordBeingChecked == "Civic" or "civic":
+
+if WordBeingChecked in ["Civic", "civic"]:
     print("This is a palindrom")
-elif WordBeingChecked == "Step on no pets" or "step on no pets":
+
+if WordBeingChecked in ["Step on no pets", "step on no pets"]:
     print("This is a palindrom")
-elif WordBeingChecked == "Borrow or rob" or "borrow or rob":
+
+if WordBeingChecked  in ["Borrow or rob", "borrow or rob"]:
     print("This is a palindrom")
-elif WordBeingChecked == "Radar" or "radar":
+
+if WordBeingChecked in ["Radar", "radar"]:
     print("This is a palindrom")
