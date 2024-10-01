@@ -28,7 +28,7 @@ if WordBeingChecked in ["Civic", "civic"]:
 if WordBeingChecked in ["Step on no pets", "step on no pets"]:
     print("This is a palindrom")
 
-if WordBeingChecked  in ["Borrow or rob", "borrow or rob"]:
+if WordBeingChecked in ["Borrow or rob", "borrow or rob"]:
     print("This is a palindrom")
 
 if WordBeingChecked in ["Radar", "radar"]:
