@@ -27,7 +27,7 @@ def Exponents(x, y):
     z = x ** y
     return z
 
-def ModularDivision(x, y,):
+def ModularDivision(x, y):
     z = x % y
     return z
 
@@ -70,6 +70,16 @@ while True:
         ExponentTerm1 = float(input("Please give me a number to use: "))
         ExponentTerm2 = float(input("Please give me the exponent for the number: "))
         print(f"This is your product {Exponents(ExponentTerm1, ExponentTerm2)}")
+
+    elif action in ["Modular", "modular"]:
+        ModularTerm1 = float(input("Please give me the first number for modular division: "))
+        ModularTerm2 = float(input("Please give me the second number for modular division: "))
+        print(f"This is your modulo product {ModularDivision(ModularTerm1, ModularTerm2)}")
+
+    elif action in ["Quotient", "quotient"]:
+        QuotientTerm1 = float(input("Please give me the first number for quotient division: "))
+        QuotientTerm2 = float(input("Please give me the second number for quotient division: "))
+        print(f"This is your quotient product {QuotientDivision(QuotientTerm1, QuotientTerm2)}")
 
     elif action in ["Exit", "exit"]:
         print("")
