@@ -6,7 +6,7 @@ def start_game():
     print("I'm thinking of a number between 1 and 100.")
     number_to_guess = random.randint(1, 100)
     max_attempts = 10
-    #Having attempts be 0 caused the user to have 11 attempts instead of 10
+    #Having attempts be 0 caused the user to have 11 attempts instead of 10 this is a logic error
     attempts = 1
     game_over = False
     while not game_over:
