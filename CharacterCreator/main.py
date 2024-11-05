@@ -19,65 +19,55 @@ while True:
         ChosenRace = str(input("Choose a race out of the options (please use capitals): "))
         print("Wizard, Knight, Archer, Healer")
         ChosenClass = str(input("Choose a class out of the options (please use capitals): "))
-        NewCharacter = [CharacterName, ChosenRace, ChosenClass]
-        CharacterList.extend(NewCharacter)
         print(f"Your new character {CharacterName} has been created!")
     
     elif action in ["Character", "character"]:
-        if CharacterList[0] != EmptyStringVar:
-            print(f"Here is {CharacterList[0]}'s stats")
+        print(f"Here is {CharacterName}'s stats")
 
-            if CharacterList[1] in ["Human"]:
+        if ChosenRace in ["Human"]:
                 Health = 15
                 Strength = 15
                 Dexterity = 15
                 Intelligence = 15
-            elif CharacterList[1] in ["Demon"]:
+        elif ChosenRace in ["Demon"]:
                 Health = 12.5
                 Strength = 15
                 Dexterity = 12.5
                 Intelligence = 20
-            elif CharacterList[1] in ["Aquatic"]:
+        elif ChosenRace in ["Aquatic"]:
                 Health = 15
                 Strength = 12.5
                 Dexterity = 17.5
                 Intelligence = 15
-            elif CharacterList[1] in ["Dwarf"]:
+        elif ChosenRace in ["Dwarf"]:
                 Health = 20
                 Strength = 20
                 Dexterity = 20
-                Intelligence = 5
+                Intelligence = 10
 
-            if CharacterList[2] in ["Wizard"]:
+        if ChosenClass in ["Wizard"]:
                 Health -= 5
                 Strength -= 5
                 Dexterity -= 5
                 Intelligence += 15
-            elif CharacterList[2] in ["Knight"]:
+        elif ChosenClass in ["Knight"]:
                 Strength += 2.5
                 Dexterity += 2.5
                 Intelligence -= 5
-            elif CharacterList[2] in ["Archer"]:
+        elif ChosenClass in ["Archer"]:
                 Health -= 2.5
                 Dexterity -= 2.5
                 Intelligence += 5
-            elif CharacterList[2] in ["Healer"]:
+        elif ChosenClass in ["Healer"]:
                 Health -= 7.5
                 Strength -= 7.5
                 Dexterity += 7.5
                 Intelligence += 7.5
             
-            print(Health)
-            print(Strength)
-            print(Dexterity)
-            print(Intelligence)
-
-        elif CharacterList == EmptyStringVar:
-            print("You havent made a character! try this again after you have made one")
-        
-        else:
-            print("Unexpected Error Try Again")
-            continue
+        print(f"This is your characters health: {Health}")
+        print(f"This is your characters strength: {Strength}")
+        print(f"This is your characters dexterity: {Dexterity}")
+        print(f"This is your characters intelligence: {Intelligence}")
     
     elif action in ["Exit", "exit"]:
         print("Thanks for using our character creator come back soon!")
