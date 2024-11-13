@@ -42,6 +42,74 @@ if StartingQuestion in ["A"]:
                     print("You got it correct!")
                     TotalScore += 1
                     Difficulty = "Normal"
+                
+                    if Difficulty in ["Normal"]:
+                        Question5 = str(input("""Solve for x, 2(5x + 5) = 50
+                                              A. 4
+                                              B. 5
+                                              C. 6
+                                              D. 3
+                                              Type Your Answer Here: """))
+                        
+                        if Question5 in ["A"]:
+                            print("You got it correct!")
+                            TotalScore += 1
+                            Difficulty = "Normal"
+
+                            if Difficulty in ["Normal"]:
+                                Question7 = str(input("""What is (5 * 10) + (10 * 8) + 15 squared
+                                                      A. 420
+                                                      B. 355
+                                                      C. 185
+                                                      D. 290
+                                                      Type Your Answer Here: """))
+                                
+                                if Question7 in ["B"]:
+                                    print("You got it correct! That was the last question lets see how you did!")
+                                    TotalScore += 1
+
+                                elif Question7 in ["A", "C", "D"]:
+                                    print("Sadly you got it wrong that was the last question lets see how you did!")
+
+                        elif Question5 in ["B", "C", "D"]:
+                            print("Sadly you got it wrong but the next question will be easier!")
+                            Difficulty = "Slightly Easier"\
+                            
+                            if Difficulty in ["Slightly Easier"]:
+                                Question3 = str(input("""What is 120 - 70
+                                                      A. 70
+                                                      B. 40
+                                                      C. 60
+                                                      D. 50
+                                                      Type Your Answer Here: """))
+                                
+                                if Question3 in ["D"]:
+                                    print("You got it correct! That was the last question lets see how you did!")
+                                    TotalScore += 1
+
+                                elif Question3 in ["A", "B", "C"]:
+                                    print("Sadly you got it wrong that was the last question lets see how you did!")
+
+                elif Question6 in ["A", "B", "D"]:
+                    print("Sadly you got it wrong but the next question will be easier!")
+                    Difficulty = "Slightly Easier"
+
+                    if Difficulty in ["Slighty Easier"]:
+                        Question3 = str(input("""What is 120 - 70
+                                              A. 70
+                                              B. 40
+                                              C. 60
+                                              D. 50
+                                              Type Your Answer Here: """))
+                        
+                        if Question3 in ["D"]:
+                            print("You got it correct!")
+                            TotalScore += 1
+                            Difficulty = "Normal"
+
+                        if Question3 in ["A", "B", "C"]:
+                            print("Sadly you got it wrong but the next question will be easier!")
+                            Difficulty = "Way Easier"
         
         elif Question2 in ["A", "B", "D"]:
             print("Sadly you got it wrong but the next question will be easier!")
@@ -49,16 +117,20 @@ if StartingQuestion in ["A"]:
 
             if Difficulty in ["Slightly Easier"]:
                 Question3 = str(input("""What is 120 - 70
-                              A. 70
-                              B. 40
-                              C. 60
-                              D. 50
-                              Type Your Answer Here: """))
+                                      A. 70
+                                      B. 40
+                                      C. 60
+                                      D. 50
+                                      Type Your Answer Here: """))
                 
                 if Question3 in ["D"]:
                     print("You got it correct!")
                     TotalScore += 1
                     Difficulty = "Normal"
+
+                elif Question3 in ["A", "B", "C"]:
+                    print("Sadly you got it wrong but the next question will be easier!")
+                    Difficulty = "Slightly Easier"
     else:
         print("Unexpected Error Try Again")
 
@@ -85,6 +157,37 @@ elif StartingQuestion in ["B", "C", "D"]:
                                       C. 6
                                       D. 3
                                       Type Your Answer Here: """))
+                
+                if Question5 in ["A"]:
+                    print("You got it correct!")
+                    TotalScore += 1
+                    Difficulty = "Normal"
+
+                    if Difficulty in ["Normal"]:
+                        Question6 = str(input("""What is the square root of 12544
+                                              A. 147
+                                              B. 135
+                                              C. 112
+                                              D. 122
+                                              Type Your Answer Here: """))
+                        
+                        if Question6 in ["C"]:
+                            print("You got it correct!")
+                            TotalScore += 1
+                            Difficulty = "Normal"
+
+                        
+                        elif Question6 in ["A", "B", "D"]:
+                            print("Sadly you got it wrong but the next question will be easier!")
+                            Difficulty = "Slightly Easier"
+
+                            if Difficulty in ["Slightly Easier"]:
+                                Question8 = str(input("""What is the square root of 12544
+                                                      A. 147
+                                                      B. 135
+                                                      C. 112
+                                                      D. 122
+                                                      Type Your Answer Here: """))
         
         elif Question3 in ["A", "B", "C"]:
             print("Sadly you got it wrong but the next question will be easier!")
