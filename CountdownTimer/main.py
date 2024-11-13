@@ -4,8 +4,6 @@ print("This is a simple timer.")
 
 import time as time
 
-time.sleep(2)
-
 print("")
 
 print("Loading")
