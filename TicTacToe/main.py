@@ -24,7 +24,7 @@ def TicTacToeWin(TicTacBoardEqual):
 
 def PlayerOrComputerWin(TicTacBoardPCWin):
     
-    IfTicBoardEqual
+    IfTicBoardEqual = True
 
     WhoWon
 
