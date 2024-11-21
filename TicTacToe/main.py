@@ -26,7 +26,7 @@ def PlayerOrComputerWin(TicTacBoardPCWin):
     
     IfTicBoardEqual = True
 
-    WhoWon
+    WhoWon = "Nobody"
 
     ListItemWin = TicTacBoardPCWin[0]
 
