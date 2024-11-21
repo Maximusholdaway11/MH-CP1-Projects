@@ -4,6 +4,39 @@ import time as time
 
 import random as random
 
+def TicTacToeWin(TicTacBoardEqual):
+
+    IfTicTacBoardIsWinnable = True
+
+    ListItem = TicTacBoardEqual[0]
+
+    for item in TicTacBoardEqual:
+            if ListItem != item:
+                IfTicTacBoardIsWinnable = False
+                break
+
+    if IfTicTacBoardIsWinnable == True:
+        TicTacBoardEqual = True
+    else:
+        TicTacBoardEqual = False
+
+    return TicTacBoardEqual
+
+def PlayerOrComputerWin(TicTacBoardPCWin):
+    
+    Pwin
+
+    ListItemWin = TicTacBoardPCWin[0]
+
+    if ListItemWin == "O":
+        Pwin = False
+    elif ListItemWin == "X":
+        Pwin = True
+    else:
+        pass
+
+    return Pwin
+
 print("This is a tic tac toe game. You are x and the computer is o. Spaces 1-9 go from top left to bottom right.")
 
 Space1 = "Empty1"
@@ -28,334 +61,179 @@ TicBoard1 = [Space1, Space2, Space3]
 TicBoard2 = [Space4, Space5, Space6]
 TicBoard3 = [Space7, Space8, Space9]
 
+TicBoard1UpDown = [Space1, Space4, Space7]
+TicBoard2UpDown = [Space2, Space5, Space8]
+TicBoard3UpDown = [Space3, Space6, Space9]
+
+TicBoardDiagonal1 = [Space1, Space5, Space9]
+TicBoardDiagonal2 = [Space3, Space5, Space7]
+
 TicBoard = [TicBoard1, 
             TicBoard2,
             TicBoard3]
 
 SomeoneHasWon = False
 
-while SomeoneHasWon in [False]:
+while SomeoneHasWon == False:
 
-    if Space1 in ["O"]:
-        breakpoint
-        time.sleep(5)
-        if Space2 in ["O"]:
-            time.sleep(5)
-            print("Code Works")
-            breakpoint
-            if Space3 in ["O"]:
-                print("Code Works")
-                SomeoneHasWon = True
-                print("The computer has won!")
+    TicBoard1 = [Space1, Space2, Space3]
+    TicBoard2 = [Space4, Space5, Space6]
+    TicBoard3 = [Space7, Space8, Space9]
 
-        elif Space5 in ["O"]:
-            time.sleep(5)
-            print("Code Works")
+    TicBoard1UpDown = [Space1, Space4, Space7]
+    TicBoard2UpDown = [Space2, Space5, Space8]
+    TicBoard3UpDown = [Space3, Space6, Space9]
 
-            if Space9 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
+    TicBoardDiagonal1 = [Space1, Space5, Space9]
+    TicBoardDiagonal2 = [Space3, Space5, Space7]
 
-        elif Space4 in ["O"]:
-            print("Code Works")
+    TicBoard1Equal = TicTacToeWin(TicBoard1)
 
-            if Space7 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
+    TicBoard2Equal = TicTacToeWin(TicBoard2)
 
-    elif Space2 in ["O"]:
+    TicBoard3Equal = TicTacToeWin(TicBoard3)
 
-        if Space5 in ["O"]:
-            print("Code Works")
+    TicBoardDiagonal1Equal = TicTacToeWin(TicBoardDiagonal1)
 
-            if Space8 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-    
-    elif Space3 in ["O"]:
-        time.sleep(5)
-        breakpoint
-        if Space6 in ["O"]:
-            time.sleep(5)
-            breakpoint
-            if Space9 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
+    TicBoardDiagonal2Equal = TicTacToeWin(TicBoardDiagonal2)
 
-    elif Space4 in ["O"]:
-        time.sleep(5)
-        if Space5 in ["O"]:
-            time.sleep(5)
+    TicBoard1UpDownEqual = TicTacToeWin(TicBoard1UpDown)
 
-            if Space6 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
+    TicBoard2UpDownEqual = TicTacToeWin(TicBoard2UpDown)
 
-    elif Space5 in ["O"]:
+    TicBoard3UpDownEqual = TicTacToeWin(TicBoard3UpDown)
 
-        if Space4 in ["O"]:
-        
-            if Space6 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-        
-        elif Space2 in ["O"]:
+    if TicBoard1Equal == True:
+        SomeoneHasWon = True
+        print("The computer has won!")
 
-            if Space8 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
+    elif TicBoard2 in ["O", "O", "O"]:
+        SomeoneHasWon = True
+        print("The computer has won!")
 
-    elif Space6 in ["O"]:
+    elif TicBoard3 in ["O", "O", "O"]:
+        SomeoneHasWon = True
+        print("The computer has won!")
 
-        if Space5 in ["O"]:
+    elif TicBoard1UpDown in ["O", "O", "O"]:
+        SomeoneHasWon = True
+        print("The computer has won!")
 
-            if Space4 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-        
-        elif Space3 in ["O"]:
+    elif TicBoard2UpDown in ["O", "O", "O"]:
+        SomeoneHasWon = True
+        print("The computer has won!")
 
-            if Space9 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
+    elif TicBoard3UpDown in ["O", "O", "O"]:
+        SomeoneHasWon = True
+        print("The computer has won!")
 
-    elif Space7 in ["O"]:
-        
-        if Space8 in ["O"]:
-            print("Code Works")
+    elif TicBoardDiagonal1 in ["O", "O", "O"]:
+        SomeoneHasWon = True
+        print("The computer has won!")
 
-            if Space9 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-        
-        elif Space4 in ["O"]:
+    elif TicBoardDiagonal2 in ["O", "O", "O"]:
+        SomeoneHasWon = True
+        print("The computer has won!")
 
-            if Space1 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
+    elif TicBoard1 in ["X", "X", "X"]:
+        SomeoneHasWon = True
+        print("You have won!")
 
-    elif Space8 in ["O"]:
+    elif TicBoard2 in ["X", "X", "X"]:
+        SomeoneHasWon = True
+        print("You have won!")
 
-        if Space7 in ["O"]:
+    elif TicBoard3 in ["X", "X", "X"]:
+        SomeoneHasWon = True
+        print("You have won!")
 
-            if Space9 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
+    elif TicBoard1UpDown in ["X", "X", "X"]:
+        SomeoneHasWon = True
+        print("You have won!")
 
-        elif Space5 in ["O"]:
+    elif TicBoard2UpDown in ["X", "X", "X"]:
+        SomeoneHasWon = True
+        print("You have won!")
 
-            if Space2 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
+    elif TicBoard3UpDown in ["X", "X", "X"]:
+        SomeoneHasWon = True
+        print("You have won!")
 
-    elif Space9 in ["O"]:
+    elif TicBoardDiagonal1 in ["X", "X", "X"]:
+        SomeoneHasWon = True
+        print("You have won!")
 
-        if Space8 in ["O"]:
-            
-            if Space7 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-        
-        elif Space6 in ["O"]:
-
-            if Space3 in ["O"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-    
-    elif Space1 in ["X"]:
-
-        if Space2 in ["X"]:
-            print("Code Works")
-
-            if Space3 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-
-        elif Space5 in ["X"]:
-            print("Code Works")
-
-            if Space9 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-
-        elif Space4 in ["X"]:
-            print("Code Works")
-
-            if Space7 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-
-    elif Space2 in ["X"]:
-
-        if Space5 in ["X"]:
-            print("Code Works")
-
-            if Space8 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-    
-    elif Space3 in ["X"]:
-
-        if Space6 in ["X"]:
-            print("Code Works")
-
-            if Space9 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-
-    elif Space4 in ["X"]:
-
-        if Space5 in ["X"]:
-            print("Code Works")
-
-            if Space6 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-
-    elif Space5 in ["X"]:
-
-        if Space4 in ["X"]:
-        
-            if Space6 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-        
-        elif Space2 in ["X"]:
-
-            if Space8 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-
-    elif Space6 in ["X"]:
-
-        if Space5 in ["X"]:
-
-            if Space4 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-        
-        elif Space3 in ["X"]:
-
-            if Space9 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-
-    elif Space7 in ["X"]:
-        
-        if Space8 in ["X"]:
-            print("Code Works")
-
-            if Space9 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-        
-        elif Space4 in ["X"]:
-
-            if Space1 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-
-    elif Space8 in ["X"]:
-
-        if Space7 in ["X"]:
-
-            if Space9 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-
-        elif Space5 in ["X"]:
-
-            if Space2 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-
-    elif Space9 in ["X"]:
-
-        if Space8 in ["X"]:
-            
-            if Space7 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-        
-        elif Space6 in ["X"]:
-
-            if Space3 in ["X"]:
-                SomeoneHasWon = True
-                print("The computer has won!")
-    elif Space1 and Space2 and Space3 and Space4 and Space5 and Space6 and Space7 and Space8:
-        print("")
+    elif TicBoardDiagonal2 in ["X", "X", "X"]:
+        SomeoneHasWon = True
+        print("You have won!")
 
     ComputerChoice = random.choice(["Empty1", "Empty2", "Empty3", "Empty4", "Empty5", "Empty6", "Empty7", "Empty8", "Empty9"])
 
     if ComputerChoice in ["Empty1"]:
         if Space1 in ["X"]:
-            pass
+            Space1 = Space1
         elif Space1 in ["O"]:
-            pass
+            Space1 = Space1
         elif Space1 in ["Empty1"]:
             Space1 = "O"
     elif ComputerChoice in ["Empty2"]:
         if Space2 in ["X"]:
-            pass
+            Space1 = Space1
         elif Space2 in ["O"]:
-            pass
+            Space1 = Space1
         elif Space2 in ["Empty2"]:
             Space2 = "O"
     elif ComputerChoice in ["Empty3"]:
         if Space3 in ["X"]:
-            pass
+            Space1 = Space1
         elif Space3 in ["O"]:
-            pass
+            Space1 = Space1
         elif Space3 in ["Empty3"]:
             Space3 = "O"
     elif ComputerChoice in ["Empty4"]:
         if Space4 in ["X"]:
-            pass
+            Space1 = Space1
         elif Space4 in ["O"]:
-            pass
+            pSpace1 = Space1
         elif Space4 in ["Empty4"]:
             Space4 = "O"
     elif ComputerChoice in ["Empty5"]:
         if Space5 in ["X"]:
-            pass
+            Space1 = Space1
         elif Space5 in ["O"]:
-            pass
+            Space1 = Space1
         elif Space5 in ["Empty5"]:
             Space5 = "O"
     elif ComputerChoice in ["Empty6"]:
         if Space6 in ["X"]:
-            pass
+            Space1 = Space1
         elif Space6 in ["O"]:
-            pass
+            Space1 = Space1
         elif Space6 in ["Empty6"]:
             Space6 = "O"
     elif ComputerChoice in ["Empty7"]:
         if Space7 in ["X"]:
-            pass
+            Space1 = Space1
         elif Space7 in ["O"]:
-            pass
+            Space1 = Space1
         elif Space7 in ["Empty7"]:
             Space7 = "O"
     elif ComputerChoice in ["Empty8"]:
         if Space8 in ["X"]:
-            pass
+            Space1 = Space1
         elif Space8 in ["O"]:
-            pass
+            Space1 = Space1
         elif Space8 in ["Empty8"]:
             Space8 = "O"
     elif ComputerChoice in ["Empty9"]:
         if Space9 in ["X"]:
-            pass
+            Space1 = Space1
         elif Space9 in ["O"]:
-            pass
+            Space1 = Space1
         elif Space9 in ["Empty9"]:
             Space9 = "O"
 
     for x in TicBoard:
-        TicBoard1 = [Space1, Space2, Space3]
-        TicBoard2 = [Space4, Space5, Space6]
-        TicBoard3 = [Space7, Space8, Space9]
-
         TicBoard = [TicBoard1, 
                     TicBoard2,
                     TicBoard3]
