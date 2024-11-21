@@ -24,18 +24,35 @@ def TicTacToeWin(TicTacBoardEqual):
 
 def PlayerOrComputerWin(TicTacBoardPCWin):
     
-    Pwin
+    IfTicBoardEqual
+
+    WhoWon
 
     ListItemWin = TicTacBoardPCWin[0]
 
     if ListItemWin == "O":
-        Pwin = False
+        for item in TicTacBoardPCWin:
+            if ListItemWin != item:
+                IfTicBoardEqual = False
+                break
+            else:
+                IfTicBoardEqual = True
+                if IfTicBoardEqual == True:
+                    WhoWon = "Computer"
+        
     elif ListItemWin == "X":
-        Pwin = True
+        for item in TicTacBoardPCWin:
+            if ListItemWin != item:
+                IfTicBoardEqual = False
+                break
+            else:
+                IfTicBoardEqual = True
+                if IfTicBoardEqual == True:
+                    WhoWon = "Player"
     else:
-        pass
+        WhoWon = "Nobody"
 
-    return Pwin
+    return WhoWon
 
 print("This is a tic tac toe game. You are x and the computer is o. Spaces 1-9 go from top left to bottom right.")
 
@@ -103,67 +120,83 @@ while SomeoneHasWon == False:
 
     TicBoard3UpDownEqual = TicTacToeWin(TicBoard3UpDown)
 
-    if TicBoard1Equal == True:
+    TicBoard1PCwin = TicTacToeWin(TicBoard1)
+
+    TicBoard2PCwin = TicTacToeWin(TicBoard2)
+
+    TicBoard3PCwin = TicTacToeWin(TicBoard3)
+
+    TicBoardDiagonal1PCwin = PlayerOrComputerWin(TicBoardDiagonal1)
+
+    TicBoardDiagonal2PCwin = PlayerOrComputerWin(TicBoardDiagonal2)
+
+    TicBoard1UpDownPCwin = PlayerOrComputerWin(TicBoard1UpDown)
+
+    TicBoard2UpDownPCwin = PlayerOrComputerWin(TicBoard2UpDown)
+
+    TicBoard3UpDownPCwin = PlayerOrComputerWin(TicBoard3UpDown)
+
+    if TicBoard1Equal == True and TicBoard1PCwin == "Computer":
         SomeoneHasWon = True
         print("The computer has won!")
 
-    elif TicBoard2 in ["O", "O", "O"]:
+    elif TicBoard2Equal == True and TicBoard2PCwin == "Computer":
         SomeoneHasWon = True
         print("The computer has won!")
 
-    elif TicBoard3 in ["O", "O", "O"]:
+    elif TicBoard3Equal == True and TicBoard3PCwin == "Computer":
         SomeoneHasWon = True
         print("The computer has won!")
 
-    elif TicBoard1UpDown in ["O", "O", "O"]:
+    elif TicBoard1UpDownEqual == True and TicBoard1UpDownPCwin == "Computer":
         SomeoneHasWon = True
         print("The computer has won!")
 
-    elif TicBoard2UpDown in ["O", "O", "O"]:
+    elif TicBoard2UpDownEqual == True and TicBoard2UpDownPCwin == "Computer":
         SomeoneHasWon = True
         print("The computer has won!")
 
-    elif TicBoard3UpDown in ["O", "O", "O"]:
+    elif TicBoard3UpDownEqual == True and TicBoard3UpDownPCwin == "Computer":
         SomeoneHasWon = True
         print("The computer has won!")
 
-    elif TicBoardDiagonal1 in ["O", "O", "O"]:
+    elif TicBoardDiagonal1Equal == True and TicBoardDiagonal1PCwin == "Computer":
         SomeoneHasWon = True
         print("The computer has won!")
 
-    elif TicBoardDiagonal2 in ["O", "O", "O"]:
+    elif TicBoardDiagonal2Equal == True and TicBoardDiagonal2PCwin == "Computer":
         SomeoneHasWon = True
         print("The computer has won!")
 
-    elif TicBoard1 in ["X", "X", "X"]:
+    elif TicBoard1Equal == True and TicBoard1PCwin == "Player":
         SomeoneHasWon = True
         print("You have won!")
 
-    elif TicBoard2 in ["X", "X", "X"]:
+    elif TicBoard2Equal == True and TicBoard2PCwin == "Player":
         SomeoneHasWon = True
         print("You have won!")
 
-    elif TicBoard3 in ["X", "X", "X"]:
+    elif TicBoard3Equal == True and TicBoard3PCwin == "Player":
         SomeoneHasWon = True
         print("You have won!")
 
-    elif TicBoard1UpDown in ["X", "X", "X"]:
+    elif TicBoard1UpDownEqual == True and TicBoard1UpDownPCwin == "Player":
         SomeoneHasWon = True
         print("You have won!")
 
-    elif TicBoard2UpDown in ["X", "X", "X"]:
+    elif TicBoard2UpDownEqual == True and TicBoard2UpDownPCwin == "Player":
         SomeoneHasWon = True
         print("You have won!")
 
-    elif TicBoard3UpDown in ["X", "X", "X"]:
+    elif TicBoard3UpDownEqual == True and TicBoard3UpDownPCwin == "Player":
         SomeoneHasWon = True
         print("You have won!")
 
-    elif TicBoardDiagonal1 in ["X", "X", "X"]:
+    elif TicBoardDiagonal1Equal == True and TicBoardDiagonal1PCwin == "Player":
         SomeoneHasWon = True
         print("You have won!")
 
-    elif TicBoardDiagonal2 in ["X", "X", "X"]:
+    elif TicBoardDiagonal2Equal == True and TicBoardDiagonal2PCwin == "Player":
         SomeoneHasWon = True
         print("You have won!")
 
