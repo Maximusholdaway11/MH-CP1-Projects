@@ -37,8 +37,7 @@ def PlayerOrComputerWin(TicTacBoardPCWin):
                 break
             else:
                 IfTicBoardEqual = True
-                if IfTicBoardEqual == True:
-                    WhoWon = "Computer"
+                WhoWon = "Computer"
         
     elif ListItemWin == "X":
         for item in TicTacBoardPCWin:
@@ -47,8 +46,7 @@ def PlayerOrComputerWin(TicTacBoardPCWin):
                 break
             else:
                 IfTicBoardEqual = True
-                if IfTicBoardEqual == True:
-                    WhoWon = "Player"
+                WhoWon = "Player"
     else:
         WhoWon = "Nobody"
 
