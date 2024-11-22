@@ -95,23 +95,6 @@ while SomeoneHasWon == False:
     TicBoard2 = [Space4, Space5, Space6]
     TicBoard3 = [Space7, Space8, Space9]
 
-    for x in TicBoard:
-        TicBoard1 = TicBoard1
-        TicBoard2 = TicBoard2
-        TicBoard3 = TicBoard3
-
-        TicBoard = [TicBoard1, 
-                    TicBoard2,
-                    TicBoard3]
-        print(x)
-
-    TicBoard1UpDown = [Space1, Space4, Space7]
-    TicBoard2UpDown = [Space2, Space5, Space8]
-    TicBoard3UpDown = [Space3, Space6, Space9]
-
-    TicBoardDiagonal1 = [Space1, Space5, Space9]
-    TicBoardDiagonal2 = [Space3, Space5, Space7]
-
     TicBoard1Equal = TicTacToeWin(TicBoard1)
 
     TicBoard2Equal = TicTacToeWin(TicBoard2)
@@ -144,6 +127,87 @@ while SomeoneHasWon == False:
 
     TicBoard3UpDownPCwin = PlayerOrComputerWin(TicBoard3UpDown)
 
+    if TicBoard1Equal == True and TicBoard1PCwin == "Computer":
+        SomeoneHasWon = True
+        print("The computer has won!")
+
+    elif TicBoard2Equal == True and TicBoard2PCwin == "Computer":
+        SomeoneHasWon = True
+        print("The computer has won!")
+
+    elif TicBoard3Equal == True and TicBoard3PCwin == "Computer":
+        SomeoneHasWon = True
+        print("The computer has won!")
+
+    elif TicBoard1UpDownEqual == True and TicBoard1UpDownPCwin == "Computer":
+        SomeoneHasWon = True
+        print("The computer has won!")
+
+    elif TicBoard2UpDownEqual == True and TicBoard2UpDownPCwin == "Computer":
+        SomeoneHasWon = True
+        print("The computer has won!")
+
+    elif TicBoard3UpDownEqual == True and TicBoard3UpDownPCwin == "Computer":
+        SomeoneHasWon = True
+        print("The computer has won!")
+
+    elif TicBoardDiagonal1Equal == True and TicBoardDiagonal1PCwin == "Computer":
+        SomeoneHasWon = True
+        print("The computer has won!")
+
+    elif TicBoardDiagonal2Equal == True and TicBoardDiagonal2PCwin == "Computer":
+        SomeoneHasWon = True
+        print("The computer has won!")
+
+    elif TicBoard1Equal == True and TicBoard1PCwin == "Player":
+        SomeoneHasWon = True
+        print("You have won!")
+
+    elif TicBoard2Equal == True and TicBoard2PCwin == "Player":
+        SomeoneHasWon = True
+        print("You have won!")
+
+    elif TicBoard3Equal == True and TicBoard3PCwin == "Player":
+        SomeoneHasWon = True
+        print("You have won!")
+
+    elif TicBoard1UpDownEqual == True and TicBoard1UpDownPCwin == "Player":
+        SomeoneHasWon = True
+        print("You have won!")
+
+    elif TicBoard2UpDownEqual == True and TicBoard2UpDownPCwin == "Player":
+        SomeoneHasWon = True
+        print("You have won!")
+
+    elif TicBoard3UpDownEqual == True and TicBoard3UpDownPCwin == "Player":
+        SomeoneHasWon = True
+        print("You have won!")
+
+    elif TicBoardDiagonal1Equal == True and TicBoardDiagonal1PCwin == "Player":
+        SomeoneHasWon = True
+        print("You have won!")
+
+    elif TicBoardDiagonal2Equal == True and TicBoardDiagonal2PCwin == "Player":
+        SomeoneHasWon = True
+        print("You have won!")
+
+    for x in TicBoard:
+        TicBoard1 = TicBoard1
+        TicBoard2 = TicBoard2
+        TicBoard3 = TicBoard3
+
+        TicBoard = [TicBoard1, 
+                    TicBoard2,
+                    TicBoard3]
+        print(x)
+
+    TicBoard1UpDown = [Space1, Space4, Space7]
+    TicBoard2UpDown = [Space2, Space5, Space8]
+    TicBoard3UpDown = [Space3, Space6, Space9]
+
+    TicBoardDiagonal1 = [Space1, Space5, Space9]
+    TicBoardDiagonal2 = [Space3, Space5, Space7]
+
     for x in range (20):
         print("")
 
@@ -156,6 +220,38 @@ while SomeoneHasWon == False:
                     TicBoard2,
                     TicBoard3]
         print(x)
+
+    TicBoard1Equal = TicTacToeWin(TicBoard1)
+
+    TicBoard2Equal = TicTacToeWin(TicBoard2)
+
+    TicBoard3Equal = TicTacToeWin(TicBoard3)
+
+    TicBoardDiagonal1Equal = TicTacToeWin(TicBoardDiagonal1)
+
+    TicBoardDiagonal2Equal = TicTacToeWin(TicBoardDiagonal2)
+
+    TicBoard1UpDownEqual = TicTacToeWin(TicBoard1UpDown)
+
+    TicBoard2UpDownEqual = TicTacToeWin(TicBoard2UpDown)
+
+    TicBoard3UpDownEqual = TicTacToeWin(TicBoard3UpDown)
+
+    TicBoard1PCwin = PlayerOrComputerWin(TicBoard1)
+
+    TicBoard2PCwin = PlayerOrComputerWin(TicBoard2)
+
+    TicBoard3PCwin = PlayerOrComputerWin(TicBoard3)
+
+    TicBoardDiagonal1PCwin = PlayerOrComputerWin(TicBoardDiagonal1)
+
+    TicBoardDiagonal2PCwin = PlayerOrComputerWin(TicBoardDiagonal2)
+
+    TicBoard1UpDownPCwin = PlayerOrComputerWin(TicBoard1UpDown)
+
+    TicBoard2UpDownPCwin = PlayerOrComputerWin(TicBoard2UpDown)
+
+    TicBoard3UpDownPCwin = PlayerOrComputerWin(TicBoard3UpDown)
 
     ChoiceOfSpace = str(input("Please choose a space to put an x in (Type numbers 1-9): "))
 
@@ -299,6 +395,38 @@ while SomeoneHasWon == False:
             Space1 = Space1
         elif Space9 in ["Empty9"]:
             Space9 = "O"
+
+    TicBoard1Equal = TicTacToeWin(TicBoard1)
+
+    TicBoard2Equal = TicTacToeWin(TicBoard2)
+
+    TicBoard3Equal = TicTacToeWin(TicBoard3)
+
+    TicBoardDiagonal1Equal = TicTacToeWin(TicBoardDiagonal1)
+
+    TicBoardDiagonal2Equal = TicTacToeWin(TicBoardDiagonal2)
+
+    TicBoard1UpDownEqual = TicTacToeWin(TicBoard1UpDown)
+
+    TicBoard2UpDownEqual = TicTacToeWin(TicBoard2UpDown)
+
+    TicBoard3UpDownEqual = TicTacToeWin(TicBoard3UpDown)
+
+    TicBoard1PCwin = PlayerOrComputerWin(TicBoard1)
+
+    TicBoard2PCwin = PlayerOrComputerWin(TicBoard2)
+
+    TicBoard3PCwin = PlayerOrComputerWin(TicBoard3)
+
+    TicBoardDiagonal1PCwin = PlayerOrComputerWin(TicBoardDiagonal1)
+
+    TicBoardDiagonal2PCwin = PlayerOrComputerWin(TicBoardDiagonal2)
+
+    TicBoard1UpDownPCwin = PlayerOrComputerWin(TicBoard1UpDown)
+
+    TicBoard2UpDownPCwin = PlayerOrComputerWin(TicBoard2UpDown)
+
+    TicBoard3UpDownPCwin = PlayerOrComputerWin(TicBoard3UpDown)
 
     if TicBoard1Equal == True and TicBoard1PCwin == "Computer":
         SomeoneHasWon = True
