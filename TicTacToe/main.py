@@ -191,16 +191,6 @@ while SomeoneHasWon == False:
         SomeoneHasWon = True
         print("You have won!")
 
-    for x in TicBoard:
-        TicBoard1 = TicBoard1
-        TicBoard2 = TicBoard2
-        TicBoard3 = TicBoard3
-
-        TicBoard = [TicBoard1, 
-                    TicBoard2,
-                    TicBoard3]
-        print(x)
-
     TicBoard1UpDown = [Space1, Space4, Space7]
     TicBoard2UpDown = [Space2, Space5, Space8]
     TicBoard3UpDown = [Space3, Space6, Space9]
@@ -208,18 +198,6 @@ while SomeoneHasWon == False:
     TicBoardDiagonal1 = [Space1, Space5, Space9]
     TicBoardDiagonal2 = [Space3, Space5, Space7]
 
-    for x in range (20):
-        print("")
-
-    for x in TicBoard:
-        TicBoard1 = TicBoard1
-        TicBoard2 = TicBoard2
-        TicBoard3 = TicBoard3
-
-        TicBoard = [TicBoard1, 
-                    TicBoard2,
-                    TicBoard3]
-        print(x)
 
     TicBoard1Equal = TicTacToeWin(TicBoard1)
 
@@ -328,7 +306,9 @@ while SomeoneHasWon == False:
             Space9 = "X"
             print("You have put an X in spot nine!")
 
-    print("The computer has gone now its your turn.")
+    TicBoard1 = [Space1, Space2, Space3]
+    TicBoard2 = [Space4, Space5, Space6]
+    TicBoard3 = [Space7, Space8, Space9]
 
     ComputerChoice = random.choice(["Empty1", "Empty2", "Empty3", "Empty4", "Empty5", "Empty6", "Empty7", "Empty8", "Empty9"])
 
@@ -396,6 +376,10 @@ while SomeoneHasWon == False:
         elif Space9 in ["Empty9"]:
             Space9 = "O"
 
+    TicBoard1 = [Space1, Space2, Space3]
+    TicBoard2 = [Space4, Space5, Space6]
+    TicBoard3 = [Space7, Space8, Space9]
+
     TicBoard1Equal = TicTacToeWin(TicBoard1)
 
     TicBoard2Equal = TicTacToeWin(TicBoard2)
@@ -428,6 +412,38 @@ while SomeoneHasWon == False:
 
     TicBoard3UpDownPCwin = PlayerOrComputerWin(TicBoard3UpDown)
 
+    TicBoard1 = [Space1, Space2, Space3]
+    TicBoard2 = [Space4, Space5, Space6]
+    TicBoard3 = [Space7, Space8, Space9]
+
+    for x in TicBoard:
+        TicBoard1 = [Space1, Space2, Space3]
+        TicBoard2 = [Space4, Space5, Space6]
+        TicBoard3 = [Space7, Space8, Space9]
+        
+        TicBoard = [TicBoard1, 
+                    TicBoard2,
+                    TicBoard3]
+        print(x)
+
+    for x in range(31):
+        print("")
+
+
+    TicBoard1 = [Space1, Space2, Space3]
+    TicBoard2 = [Space4, Space5, Space6]
+    TicBoard3 = [Space7, Space8, Space9]
+
+    for x in TicBoard:
+        TicBoard1 = [Space1, Space2, Space3]
+        TicBoard2 = [Space4, Space5, Space6]
+        TicBoard3 = [Space7, Space8, Space9]
+        
+        TicBoard = [TicBoard1, 
+                    TicBoard2,
+                    TicBoard3]
+        print(x)
+    
     if TicBoard1Equal == True and TicBoard1PCwin == "Computer":
         SomeoneHasWon = True
         print("The computer has won!")
