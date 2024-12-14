@@ -948,18 +948,24 @@ while True:
                     elif DamageAndCombatDoneList[0] == True:
                         if DamageAndCombatDoneList[2] == "Enemy":
                             FirstEnemyHealth = DamageAndCombatDoneList[1]
+                            continue
                         elif DamageAndCombatDoneList[2] == "Player":
                             PlayerHealth = DamageAndCombatDoneList[1]
+                            continue
                         elif DamageAndCombatDoneList[3] == "Both":
                             FirstEnemyHealth = DamageAndCombatDoneList[1]
                             PlayerHealth = DamageAndCombatDoneList[2]
+                            continue
                         if DamageAndCombatDoneList[1] == "Player Defeatd":
                             PlayerDefeated = True
+                            continue
                         elif DamageAndCombatDoneList[1] == "Enemy Defeated":
                             FirstEnemyDefeated = True
+                            continue
                         elif DamageAndCombatDoneList[3] == "Ran Away":
                             FirstEnemyHealth = DamageAndCombatDoneList[1]
                             PlayerHealth = DamageAndCombatDoneList[2]
+                            continue
                 else:
                     if FirstEnemyDefeated == True:
                         print("You have successfully defeated Enemy1!")
