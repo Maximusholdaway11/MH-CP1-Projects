@@ -74,7 +74,7 @@ ItemBelt = ["Stick"]
 
 PlayerStatHealth = 1
 
-PlayerStatAttack = 1
+PlayerStatDamage = 1
 
 PlayerStatDefense = 1
 
@@ -693,7 +693,8 @@ while True:
     elif EquippedItem == "Sword":
         WeaponStatDamage = 4
 
-    PlayerAttack = PlayerStatAttack + WeaponStatDamage
+    DamageAndCombatDoneList = []
+    PlayerDamage = PlayerStatDamage + WeaponStatDamage
     PlayerHealth = PlayerStartingHealth + PlayerStatHealth
     PlayerDefense = PlayerStatDefense
 
@@ -841,3 +842,54 @@ while True:
             elif PlayerInventoryAction == "Exit":
                 print("Hope you had a succesfull inventory use!")
                 break
+    elif PlayerDecision == "Stats":
+        while True:
+            PlayerStatAction = str(input("Do you want to check your stats, use your stat points, or exit your stats? (To check stats type Stats, to use stat points type Points, to exit type Exit)"))
+            if PlayerStatAction == "Stats":
+                print(f"These are your current stats Health is {PlayerStatHealth}, Damage is {PlayerStatDamage}, and Defense is {PlayerStatDefense}.")
+            elif PlayerStatAction == "Points":
+                if PlayerStatPoints > 0:
+                    while True:
+                        PlayerStatDecision = str(input(f"What stat do you want to add to? Also you currently have This many stat points {PlayerStatPoints}. (Type Damage for damage, Health for health, and Defense for defense)"))
+                        if PlayerStatDecision == "Damage":
+                            print("How much do you want to add to Damage?")
+                            DamagePointAdd = int(input("Number: "))
+                            if DamagePointAdd > PlayerStatPoints:
+                                print("You can't add more points than you have! Please Decide the number of points you want to add again.")
+                                DamagePointAdd = int(input("Number: "))
+                                PlayerStatDamage += DamagePointAdd
+                                print(f"You have successfully added {DamagePointAdd} points to damage!")
+                                DamagePointAdd = 0
+                            elif DamagePointAdd <= PlayerStatPoints:
+                                PlayerStatDamage += DamagePointAdd
+                                print(f"You have successfully added {DamagePointAdd} points to damage!")
+                                DamagePointAdd = 0
+                        if PlayerStatDecision == "Health":
+                            print("How much do you want to add to Health?")
+                            HealthPointAdd = int(input("Number: "))
+                            if HealthPointAdd > PlayerStatPoints:
+                                print("You can't add more points than you have! Please Decide the number of points you want to add again.")
+                                HealthPointAdd = int(input("Number: "))
+                                PlayerStatHealth += HealthPointAdd
+                                print(f"You have successfully added {HealthPointAdd} points to health!")
+                                HealthPointAdd = 0
+                            elif HealthPointAdd <= PlayerStatPoints:
+                                PlayerStatHealth += HealthPointAdd
+                                print(f"You have successfully added {HealthPointAdd} points to health!")
+                                HealthPointAdd = 0
+                        if PlayerStatDecision == "Defense":
+                            print("How much do you want to add to Defense?")
+                            DefensePointAdd = int(input("Number: "))
+                            if DefensePointAdd > PlayerStatPoints:
+                                print("You can't add more points than you have! Please Decide the number of points you want to add again.")
+                                DefensePointAdd = int(input("Number: "))
+                                PlayerStatDefense += DefensePointAdd
+                                print(f"You have successfully added {DefensePointAdd} points to defense!")
+                                DefensePointAdd = 0
+                            elif DefensePointAdd <= PlayerStatPoints:
+                                PlayerStatDefense += DefensePointAdd
+                                print(f"You have successfully added {DefensePointAdd} points to defense!")
+                                DefensePointAdd = 0
+                        elif PlayerStatDecision == "Exit":
+                            print("Hope you had a succesful time using stats!")
+                            break
