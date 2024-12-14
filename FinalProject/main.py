@@ -738,7 +738,7 @@ while True:
     elif EquippedItem == "Sword":
         WeaponStatDamage = 4
 
-    DamageAndCombatDoneList = ["", "", "", ""]
+    DamageAndCombatDoneList = ["PlaceHolder1", "PlaceHolder2", "PlaceHolder3", "PlaceHolder4"]
     PlayerDamage = PlayerStatDamage + WeaponStatDamage
     PlayerHealth = PlayerStartingHealth + PlayerStatHealth
     PlayerDefense = PlayerStatDefense
