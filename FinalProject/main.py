@@ -934,9 +934,9 @@ while True:
                                 PlayerStatDefense += DefensePointAdd
                                 print(f"You have successfully added {DefensePointAdd} points to defense!")
                                 DefensePointAdd = 0
-                        elif PlayerStatDecision == "Exit":
-                            print("Hope you had a succesful time using stats!")
-                            break
+            elif PlayerStatAction == "Exit":
+                print("Hope you had a succesful time using stats!")
+                break
     if CurrentPlayerSpace == "Enemy1":
         if FirstEnemyDefeated == False:
             print("You encountered Enemy number 1! Time to fight them.")
