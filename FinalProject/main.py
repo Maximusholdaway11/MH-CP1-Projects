@@ -946,9 +946,9 @@ while True:
                     if DamageAndCombatDoneList[0] != True:
                         continue
                     elif DamageAndCombatDoneList[0] == True:
-                        if DamageAndCombatDoneList[3] == "Enemy":
+                        if DamageAndCombatDoneList[2] == "Enemy":
                             FirstEnemyHealth = DamageAndCombatDoneList[1]
-                        elif DamageAndCombatDoneList[3] == "Player":
+                        elif DamageAndCombatDoneList[2] == "Player":
                             PlayerHealth = DamageAndCombatDoneList[1]
                         elif DamageAndCombatDoneList[3] == "Both":
                             FirstEnemyHealth = DamageAndCombatDoneList[1]
