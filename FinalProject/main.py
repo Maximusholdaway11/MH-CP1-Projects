@@ -746,3 +746,98 @@ while True:
         SpacePlayerIsMovingTo = str(input("Which space do you want to move to?: "))
         CurrentPlayerSpace = Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace)
         print(f"You have moved to {CurrentPlayerSpace}!")
+    elif PlayerDecision == "Inventory":
+        while True:
+            PlayerInventoryAction = str(input("Do you want to swap the item you currently have, Exit your inventory, or Put away an item? (Say Swap to swap your stick and the item you will get, Store to store an item, and Exit to exit the inventory (You need to store items to swap them or you can just store the stick and it will swap to the other item)): "))
+            if PlayerInventoryAction == "Swap":
+                if InventoryList != []:
+                    PlayerSwapAction = str(input("What item do you want to swap?: "))
+                    print(InventoryList)
+                    if PlayerSwapAction == "Sword":
+                        if EquippedItem == "Sword":
+                            print("You can't swap out your sword for your sword.")
+                            continue
+                        elif EquippedItem == "Stick":
+                            EquippedItem == "Sword"
+                            InventoryList.remove("Sword")
+                            InventoryList.append("Stick")
+                            print("You have succesfully swapped out your stick for your sword!")
+                        elif EquippedItem == "Nothing":
+                            print("You can't swap out nothing for a sword!")
+                            continue
+                        else:
+                            print("Unexpected error try again.")
+                            continue
+                    elif PlayerSwapAction == "Stick":
+                        if EquippedItem == "Stick":
+                            print("You can't swap out your stick for your stick.")
+                            continue
+                        elif EquippedItem == "Sword":
+                            EquippedItem == "Stick"
+                            InventoryList.remove("Stick")
+                            InventoryList.append("Sword")
+                            print("You have succesfully swapped out your sword for your stick!")
+                        elif EquippedItem == "Nothing":
+                            print("You can't swap out nothing for a stick!")
+                            continue
+                        else:
+                            print("Unexpected error try again.")
+                            continue
+                elif InventoryList == []:
+                    print("You can't swap anything you don't have anything in your inventory.")
+                    continue
+            elif PlayerInventoryAction == "Store":
+                if len(ItemBelt) == 2:
+                    PlayerStoreAction = str(input("What do you want to store?: "))
+                    if PlayerStoreAction == "Sword":
+                        if EquippedItem in ["Stick"]:
+                            if InventoryList not in ["Sword"]:
+                                ItemBelt.remove("Sword")
+                                InventoryList.append("Sword")
+                                print("You have successfully added your sword to your inventory!")
+                            elif InventoryList in ["Sword"]:
+                                print("You can't store your sword it's already in your inventory.")
+                        elif EquippedItem in ["Sword"]:
+                            ItemBelt.remove("Sword")
+                            InventoryList.append("Sword")
+                            EquippedItem = "Nothing"
+                            if InventoryList in ["Stick", "Sword"]:
+                                InventoryList.remove("Stick")
+                                ItemBelt.append("Stick")
+                                EquippedItem = "Stick"
+                                print("You have succesfully added your sword to your inventory and equipped your stick!")
+                            elif ItemBelt in ["Stick"]:
+                                EquippedItem = "Stick"
+                                print("You have succesfully added your sword to your inventory and equipped your stick!")
+                        elif EquippedItem in ["Nothing"]:
+                            print("You can't store nothing.")
+                            continue
+                    elif PlayerStoreAction == "Stick":
+                        if EquippedItem in ["Sword"]:
+                            if InventoryList not in ["Stick"]:
+                                ItemBelt.remove("Stick")
+                                InventoryList.append("Stick")
+                                print("You have successfully added your stick to your inventory!")
+                            elif InventoryList in ["Sword"]:
+                                print("You can't store your stick it's already in your inventory.")
+                        elif EquippedItem in ["Stick"]:
+                            ItemBelt.remove("Stick")
+                            InventoryList.append("Stick")
+                            EquippedItem = "Nothing"
+                            if InventoryList in ["Sword", "Stick"]:
+                                InventoryList.remove("Sword")
+                                ItemBelt.append("Sword")
+                                EquippedItem = "Sword"
+                                print("You have succesfully added your stick to your inventory and equipped your sword!")
+                            elif ItemBelt in ["Sword"]:
+                                EquippedItem = "Sword"
+                                print("You have succesfully added your stick to your inventory and equipped your sword!")
+                        elif EquippedItem in ["Nothing"]:
+                            print("You can't store nothing.")
+                            continue
+                elif len(ItemBelt) == 1:
+                    print("You can't store anything you don't have anything other than your stick to store!")
+                    continue
+            elif PlayerInventoryAction == "Exit":
+                print("Hope you had a succesfull inventory use!")
+                break
