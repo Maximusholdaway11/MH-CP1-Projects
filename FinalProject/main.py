@@ -40,11 +40,11 @@ Space15 = "Chest3"
 
 Space16 = "Space16"
 
-Space17 = "Enemy3"
+Space17 = "Enemy2"
 
 Space18 = "Space18"
 
-Space19 = "Enemy2"
+Space19 = "Enemy3"
 
 Space20 = "Space20"
 
@@ -444,7 +444,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
 
 def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar, EnemyDefenseFVar, PlayerDefenseFVar, PlayerDefeatedFVar, EnemyDefeatedFVar):
     DamageAndCombatDoneListFVar = []
-    PlayerHasDoneCombatFVar == False
+    PlayerHasDoneCombatFVar = False
     if EnemyHealthFVar == 0:
         EnemyDefeatedFVar = "Enemy Dead"
     elif PlayerHealthFVar == 0:
