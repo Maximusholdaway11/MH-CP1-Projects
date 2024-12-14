@@ -2,7 +2,9 @@
 
 print("This is my adventure game, have a good time!")
 
-print("For movement simply choose a blank that you are right next to. Also walls will block you when trying to move.")
+print("For movement simply choose a space that you are right next to. Also walls will block you when trying to move.")
+
+print("At times the health for both you and the enemy can be negative that also means you or the enemy were defeated same with 0.")
 
 import random as random
 
@@ -66,7 +68,7 @@ PlayerHasDoneCombat = False
 
 PlayerHasDefended = False
 
-PlayerStartingHealth = 5
+PlayerStartingHealth = 11
 
 EquippedItem = "Stick"
 
@@ -74,21 +76,21 @@ ItemBelt = ["Stick"]
 
 PlayerStatHealth = 1
 
-PlayerStatDamage = 1
+PlayerStatDamage = 15
 
 PlayerStatDefense = 1
 
-FirstEnemyHealth = 5
+FirstEnemyHealth = 6
 
-FirstEnemyDamage = 3
+FirstEnemyDamage = 2
 
-FirstEnemyDefense = 2
+FirstEnemyDefense = 0
 
 FirstEnemyDefeated = False
 
-SecondEnemyHealth = 5
+SecondEnemyHealth = 6
 
-SecondEnemyDamage = 3
+SecondEnemyDamage = 4
 
 SecondEnemyDefense = 2
 
@@ -122,6 +124,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall4":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
             return CurrentPlayerSpace
@@ -134,6 +137,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall4":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Space3":
             CurrentPlayerSpace = "Space3"
             return CurrentPlayerSpace
@@ -142,6 +146,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Space3":
         if SpacePlayerIsMovingTo == "Enemy1":
             CurrentPlayerSpace = "Enemy1"
@@ -151,6 +156,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall4":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall1":
             print("Can't move there it's a wall.")
             return CurrentPlayerSpace
@@ -159,6 +165,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Space4":
         if SpacePlayerIsMovingTo == "Space3":
             CurrentPlayerSpace = "Space3"
@@ -168,6 +175,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall1":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Space8":
             CurrentPlayerSpace = "Space8"
             return CurrentPlayerSpace
@@ -176,6 +184,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Chest4":
         if SpacePlayerIsMovingTo == "Space10":
             CurrentPlayerSpace = "Space10"
@@ -185,8 +194,10 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall1":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Space6":
         if SpacePlayerIsMovingTo == "Exit/Start":
             CurrentPlayerSpace = "Exit/Start"
@@ -196,21 +207,26 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall4":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Space11":
             CurrentPlayerSpace = "Space11"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall6":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Space8":
         if SpacePlayerIsMovingTo == "Space4":
             CurrentPlayerSpace = "Space4"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall6":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall4":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Space3":
             CurrentPlayerSpace = "Space3"
             return CurrentPlayerSpace
@@ -222,18 +238,23 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall1":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall2":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Space10":
         if SpacePlayerIsMovingTo == "Chest4":
             CurrentPlayerSpace = "Chest4"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall1":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall2":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Chest3":
             CurrentPlayerSpace = "Chest3"
             return CurrentPlayerSpace
@@ -242,14 +263,17 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Space11":
         if SpacePlayerIsMovingTo == "Space6":
             CurrentPlayerSpace = "Space6"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall4":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall6":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Enemy2":
             CurrentPlayerSpace = "Enemy2"
             return CurrentPlayerSpace
@@ -258,14 +282,17 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Chest5":
         if SpacePlayerIsMovingTo == "Space8":
             CurrentPlayerSpace = "Space8"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall6":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall4":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Enemy3":
             CurrentPlayerSpace = "Enemy3"
             return CurrentPlayerSpace
@@ -277,18 +304,23 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall1":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall2":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Chest3":
         if SpacePlayerIsMovingTo == "Space10":
             CurrentPlayerSpace = "Space10"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall2":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall1":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Enemy3":
             CurrentPlayerSpace = "Enemy3"
             return CurrentPlayerSpace
@@ -297,14 +329,17 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Space16":
         if SpacePlayerIsMovingTo == "Enemy2":
             CurrentPlayerSpace = "Enemy2"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall5":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall6":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Space11":
             CurrentPlayerSpace = "Space11"
             return CurrentPlayerSpace
@@ -313,14 +348,17 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Enemy2":
         if SpacePlayerIsMovingTo == "Chest5":
             CurrentPlayerSpace = "Chest5"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall6":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall5":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Space11":
             CurrentPlayerSpace = "Space11"
             return CurrentPlayerSpace
@@ -338,6 +376,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Space18":
         if SpacePlayerIsMovingTo == "Enemy2":
             CurrentPlayerSpace = "Enemy2"
@@ -347,28 +386,35 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall2":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Enemy3":
             CurrentPlayerSpace = "Enemy3"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall3":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Chest2":
             CurrentPlayerSpace = "Chest2"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall6":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall5":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Enemy3":
         if SpacePlayerIsMovingTo == "Space18":
             CurrentPlayerSpace = "Space18"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall2":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall3":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "FinalBoss":
             CurrentPlayerSpace = "FinalBoss"
             return CurrentPlayerSpace
@@ -386,14 +432,17 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Space20":
         if SpacePlayerIsMovingTo == "FinalBoss":
             CurrentPlayerSpace = "FinalBoss"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall2":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall3":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Enemy3":
             CurrentPlayerSpace = "Enemy3"
             return CurrentPlayerSpace
@@ -402,6 +451,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Chest1":
         if SpacePlayerIsMovingTo == "Enemy2":
             CurrentPlayerSpace = "Enemy2"
@@ -411,16 +461,20 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall5":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Chest2":
         if SpacePlayerIsMovingTo == "Space18":
             CurrentPlayerSpace = "Space18"
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall5":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall3":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Enemy3":
             CurrentPlayerSpace = "Enemy3"
             return CurrentPlayerSpace
@@ -429,6 +483,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "FinalBoss":
         if SpacePlayerIsMovingTo == "Enemy3":
             CurrentPlayerSpace = "Enemy3"
@@ -438,38 +493,44 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             return CurrentPlayerSpace
         elif SpacePlayerIsMovingTo == "Wall3":
             print("Can't move there it's a wall.")
+            return CurrentPlayerSpace
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     else:
-        print("Unexpected Error Has Occurred Please Try Again")
+        print("Unexpected Error Has Occurred Please Try Again You have been sent to the starting place.")
+        CurrentPlayerSpace = "Exit/Start"
+        return CurrentPlayerSpace
 
 def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar, EnemyDefenseFVar, PlayerDefenseFVar, PlayerDefeatedFVar, EnemyDefeatedFVar):
     DamageAndCombatDoneListFVar = []
     PlayerHasDoneCombatFVar = False
-    if EnemyHealthFVar == 0:
+    if EnemyHealthFVar <= 0:
         EnemyDefeatedFVar = "Enemy Dead"
-    elif PlayerHealthFVar == 0:
+    elif PlayerHealthFVar <= 0:
         PlayerDefeatedFVar = "Player Dead"
     if EnemyDefeatedFVar == "Enemy Dead":
         PlayerHasDoneCombatFVar = True
         DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
         DamageAndCombatDoneListFVar.append(EnemyDefeatedFVar)
+        DamageAndCombatDoneListFVar.append("Player")
         return DamageAndCombatDoneListFVar
     elif PlayerDefeatedFVar == "Player Dead":
         PlayerHasDoneCombatFVar = True
         DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
         DamageAndCombatDoneListFVar.append(PlayerDefeatedFVar)
+        DamageAndCombatDoneListFVar.append("Enemy")
         return DamageAndCombatDoneListFVar
     elif EnemyDefeatedFVar != "Enemy Dead" and PlayerDefeatedFVar != "Player Dead":
-        PlayerCombatDecision = str(input(f"Do you want to Attack, Defend, or Run Away? Also Your health is at {PlayerHealthFVar} The enemy's health is at {EnemyHealthFVar}"))
+        PlayerCombatDecision = str(input(f"Do you want to Attack, Defend, or dodge an attack? (To dodge an attack type Dodge) Also Your health is at {PlayerHealthFVar} The enemy's health is at {EnemyHealthFVar}: "))
         PlayerHasDoneCombatFVar = False
         PlayerHasDefendedFVar = False
         if PlayerCombatDecision == "Attack":
-            EnemyDecision = random.randint(1, 5)
+            EnemyDecision = random.randint(1, 6)
             if EnemyDecision >= 4:
                 EnemyDodgedAttack = random.randint(1, 10)
                 if EnemyDodgedAttack <= 2:
-                    print("The enemy dodged the attack!")
+                    print("The enemy dodged the attack.")
                     PlayerHasDoneCombatFVar = True
                     DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
                     return DamageAndCombatDoneListFVar
@@ -504,7 +565,7 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                     DamageAndCombatDoneListFVar.append("Enemy")
                     return DamageAndCombatDoneListFVar
                 elif EnemyWasAbleToRunAwayFVar == 2:
-                    print("The enemy was able to run away.")
+                    print("The enemy dodged the attack.")
                     EnemyRanAway = "Ran Away"
                     PlayerHasDoneCombatFVar = True
                     DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
@@ -530,19 +591,19 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                 PlayerHasDefendedFVar = True
                 DamageAndCombatDoneListFVar.append(PlayerHasDefendedFVar)
                 return DamageAndCombatDoneListFVar
-        elif PlayerCombatDecision == "Run Awway":
+        elif PlayerCombatDecision == "Dodge":
             PlayerWasAbleToRunAway = random.randint(1, 2)
             if PlayerWasAbleToRunAway == 1:
                 if EnemyDecision <= 2:
                     PlayerHealthFVar -= EnemyDamageFVar
-                    print(f"You have failed to run away and the enemy has hit you for {EnemyDamageFVar} damage. and you now have {PlayerHealthFVar} health.")
+                    print(f"You have failed to Dodge and the enemy has hit you for {EnemyDamageFVar} damage. and you now have {PlayerHealthFVar} health.")
                     PlayerHasDoneCombatFVar = True
                     DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
                     DamageAndCombatDoneListFVar.append(PlayerHealthFVar)
                     DamageAndCombatDoneListFVar.append("Player")
                     return DamageAndCombatDoneListFVar
             elif PlayerWasAbleToRunAway == 2:
-                print("You have successfully run away!")
+                print("You have successfully Dodged!")
                 PlayerRanAway = "Ran Away"
                 PlayerHasDoneCombatFVar = True
                 DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
@@ -550,10 +611,15 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                 DamageAndCombatDoneListFVar.append(PlayerHealthFVar)
                 DamageAndCombatDoneListFVar.append(PlayerRanAway)
                 return DamageAndCombatDoneListFVar
+        else:
+            print("Unexpected Error try again.")
+            PlayerHasDoneCombatFVar = True
+            DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
+            return DamageAndCombatDoneListFVar
 
-def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, PlayerDamageFVar2, EnemyDefenseFVar2, PlayerDefenseFVar2, PlayerDefeatedFVar2, FinalBossDefeatedFVar):
+def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, PlayerDamageFVar2, EnemyDefenseFVar2, PlayerDefenseFVar2, FinalBossDefeatedFVar, PlayerDefeatedFVar2):
     DamageAndCombatDoneListFVar2 = []
-    PlayerHasDoneCombatFVar2 == False
+    PlayerHasDoneCombatFVar2 = False
     if EnemyHealthFVar2 == 0:
         FinalBossDefeatedFVar = "Enemy Dead"
     elif PlayerHealthFVar2 == 0:
@@ -569,22 +635,22 @@ def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, Playe
         DamageAndCombatDoneListFVar2.append(PlayerDefeatedFVar2)
         return DamageAndCombatDoneListFVar2
     elif FinalBossDefeatedFVar != "Enemy Dead" and PlayerDefeatedFVar2 != "Player Dead":
-        PlayerCombatDecision = str(input(f"Do you want to Attack, Defend, or Run Away? Also Your health is at {PlayerHealthFVar2} The enemy's health is at {EnemyHealthFVar2}"))
+        PlayerCombatDecision = str(input(f"Do you want to Attack, Defend, or dodge an attack? (To dodge an attack type Dodge) Also Your health is at {PlayerHealthFVar2} The Boss's health is at {EnemyHealthFVar2}"))
         PlayerHasDoneCombatFVar2 = False
         PlayerHasDefendedFVar2 = False
         if PlayerCombatDecision == "Attack":
             FinalBossDecision = random.randint(1, 5)
-            if FinalBossDecision <= 2:
+            if FinalBossDecision == 2:
                 FinalBossDodgedAttack = random.randint(1, 10)
-                if FinalBossDodgedAttack >= 3:
-                    print("The enemy dodged the attack!")
+                if FinalBossDodgedAttack <= 2:
+                    print("The Boss dodged the attack!")
                     PlayerHasDoneCombatFVar2 = True
                     DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar2)
                     return DamageAndCombatDoneListFVar2
-                elif FinalBossDodgedAttack <= 2:
+                elif FinalBossDodgedAttack >= 3:
                     EnemyDamageReductionFVar = PlayerDamageFVar2 - EnemyDefenseFVar2
                     EnemyHealthFVar2 -= EnemyDamageReductionFVar
-                    print(f"The enemy has defended but you have still hit the enemy for {EnemyDamageReductionFVar} damage and the enemy now has {EnemyHealthFVar2} health!")
+                    print(f"The Boss has defended but you have still hit the Boss for {EnemyDamageReductionFVar} damage and the Boss now has {EnemyHealthFVar2} health!")
                     PlayerHasDoneCombatFVar2 = True
                     DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar)
                     DamageAndCombatDoneListFVar2.append(EnemyHealthFVar2)
@@ -592,9 +658,9 @@ def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, Playe
                     return DamageAndCombatDoneListFVar2
             elif FinalBossDecision >= 3:
                 EnemyHealthFVar2 -= PlayerDamageFVar2
-                print(f"You have hit the enemy for {PlayerDamageFVar2} damage and the enemy now has {EnemyHealthFVar2} health!")
+                print(f"You have hit the Boss for {PlayerDamageFVar2} damage and the Boss now has {EnemyHealthFVar2} health!")
                 PlayerHealthFVar2 -= EnemyDamageFVar2
-                print(f"The enemy has hit you for {EnemyDamageFVar2} damage and you now have {PlayerHealthFVar2} health.")
+                print(f"The Boss has hit you for {EnemyDamageFVar2} damage and you now have {PlayerHealthFVar2} health.")
                 PlayerHasDoneCombatFVar = True
                 DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar)
                 DamageAndCombatDoneListFVar2.append(EnemyHealthFVar2)
@@ -617,25 +683,30 @@ def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, Playe
                 PlayerHasDefendedFVar2 = True
                 DamageAndCombatDoneListFVar2.append(PlayerHasDefendedFVar2)
                 return DamageAndCombatDoneListFVar2
-        elif PlayerCombatDecision == "Run Awway":
+        elif PlayerCombatDecision == "Dodge":
             PlayerWasAbleToRunAway = random.randint(1, 2)
             if PlayerWasAbleToRunAway == 1:
                 if EnemyDecision <= 2:
                     PlayerHealthFVar2 -= EnemyDamageFVar2
-                    print(f"You have failed to run away and the enemy has hit you for {EnemyDamageFVar2} damage. and you now have {PlayerHealthFVar2} health.")
+                    print(f"You have failed to dodge and the Boss has hit you for {EnemyDamageFVar2} damage. and you now have {PlayerHealthFVar2} health.")
                     PlayerHasDoneCombatFVar2 = True
                     DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar2)
                     DamageAndCombatDoneListFVar2.append(PlayerHealthFVar2)
                     DamageAndCombatDoneListFVar2.append("Player")
                     return DamageAndCombatDoneListFVar2
             elif PlayerWasAbleToRunAway == 2:
-                print("You have successfully run away!")
+                print("You have successfully dodged!")
                 PlayerHasDoneCombatFVar2 = True
                 DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar2)
                 DamageAndCombatDoneListFVar2.append(EnemyHealthFVar2)
                 DamageAndCombatDoneListFVar2.append(PlayerHealthFVar2)
                 DamageAndCombatDoneListFVar2.append("Both")
                 return DamageAndCombatDoneListFVar2
+        else:
+            print("Unexpected Error try again.")
+            PlayerHasDoneCombatFVar2 = True
+            DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar2)
+            return DamageAndCombatDoneListFVar2
 
 ChestList1 = ["", ""]
 
@@ -668,7 +739,7 @@ def ChestOpener(CurrentPlayerSpaceFVar, ChestOpened):
             pass
     if CurrentPlayerSpaceFVar == "Chest3":
         if ChestOpened == False:
-            print("You have found the first chest inside it gives you three stat points!")
+            print("You have found the third chest inside it gives you three stat points!")
             PointAmountGiven = 3
             ChestFVarList = [PointAmountGiven, True]
             return ChestFVarList
@@ -676,7 +747,7 @@ def ChestOpener(CurrentPlayerSpaceFVar, ChestOpened):
             pass
     if CurrentPlayerSpaceFVar == "Chest4":
         if ChestOpened == False:
-            print("You have found the first chest inside it gives you four stat points!")
+            print("You have found the fourth chest inside it gives you four stat points!")
             PointAmountGiven = 4
             ChestFVarList = [PointAmountGiven, True]
             return ChestFVarList
@@ -787,7 +858,7 @@ while True:
         if FifthChestOpened == True:
             pass
     
-    PlayerDecision = str(input("Do you want to move, check your inventory or check / use your stats?? (Type Move for movement, Inventory for inventory checking, and Stats for Stats checking / using them): "))
+    PlayerDecision = str(input(f"Do you want to move, check your inventory or check / use your stats?? (Type Move for movement, Inventory for inventory checking, and Stats for Stats checking / using them) Also you are at {CurrentPlayerSpace}: "))
 
     if PlayerDecision == "Move":
         SpacePlayerIsMovingTo = str(input("Which space do you want to move to?: "))
@@ -848,7 +919,7 @@ while True:
                             ItemBelt.remove("Sword")
                             InventoryList.append("Sword")
                             EquippedItem = "Nothing"
-                            if InventoryList in ["Stick", "Sword"]:
+                            if InventoryList in ["Stick"]:
                                 InventoryList.remove("Stick")
                                 ItemBelt.append("Stick")
                                 EquippedItem = "Stick"
@@ -871,7 +942,7 @@ while True:
                             ItemBelt.remove("Stick")
                             InventoryList.append("Stick")
                             EquippedItem = "Nothing"
-                            if InventoryList in ["Sword", "Stick"]:
+                            if InventoryList in ["Sword"]:
                                 InventoryList.remove("Sword")
                                 ItemBelt.append("Sword")
                                 EquippedItem = "Sword"
@@ -882,20 +953,23 @@ while True:
                         elif EquippedItem in ["Nothing"]:
                             print("You can't store nothing.")
                             continue
-                elif len(ItemBelt) == 1:
+                elif len(ItemBelt) == 1 and ItemBelt not in ["Sword"]:
                     print("You can't store anything you don't have anything other than your stick to store!")
+                    continue
+                elif len(ItemBelt) == 1 and ItemBelt not in ["Stick"]:
+                    print("You can't store anything you don't have anything other than your sword to store!")
                     continue
             elif PlayerInventoryAction == "Exit":
                 print("Hope you had a succesfull inventory use!")
                 break
     elif PlayerDecision == "Stats":
         while True:
-            PlayerStatAction = str(input("Do you want to check your stats, use your stat points, or exit your stats? (To check stats type Stats, to use stat points type Points, to exit type Exit)"))
+            PlayerStatAction = str(input("Do you want to check your stats, use your stat points, or exit your stats? (To check stats type Stats, to use stat points type Points, to exit type Exit): "))
             if PlayerStatAction == "Stats":
                 print(f"These are your current stats Health is {PlayerStatHealth}, Damage is {PlayerStatDamage}, and Defense is {PlayerStatDefense}.")
             elif PlayerStatAction == "Points":
                 if PlayerStatPoints > 0:
-                        PlayerStatDecision = str(input(f"What stat do you want to add to? Also you currently have This many stat points {PlayerStatPoints}. (Type Damage for damage, Health for health, and Defense for defense)"))
+                        PlayerStatDecision = str(input(f"What stat do you want to add to? Also you currently have This many stat points {PlayerStatPoints}. (Type Damage for damage, Health for health, and Defense for defense): "))
                         if PlayerStatDecision == "Damage":
                             print("How much do you want to add to Damage?")
                             DamagePointAdd = int(input("Number: "))
@@ -903,10 +977,12 @@ while True:
                                 print("You can't add more points than you have! Please Decide the number of points you want to add again.")
                                 DamagePointAdd = int(input("Number: "))
                                 PlayerStatDamage += DamagePointAdd
+                                PlayerStatPoints -= DamagePointAdd
                                 print(f"You have successfully added {DamagePointAdd} points to damage!")
                                 DamagePointAdd = 0
                             elif DamagePointAdd <= PlayerStatPoints:
                                 PlayerStatDamage += DamagePointAdd
+                                PlayerStatPoints -= DamagePointAdd
                                 print(f"You have successfully added {DamagePointAdd} points to damage!")
                                 DamagePointAdd = 0
                         if PlayerStatDecision == "Health":
@@ -916,10 +992,12 @@ while True:
                                 print("You can't add more points than you have! Please Decide the number of points you want to add again.")
                                 HealthPointAdd = int(input("Number: "))
                                 PlayerStatHealth += HealthPointAdd
+                                PlayerStatPoints -= HealthPointAdd
                                 print(f"You have successfully added {HealthPointAdd} points to health!")
                                 HealthPointAdd = 0
                             elif HealthPointAdd <= PlayerStatPoints:
                                 PlayerStatHealth += HealthPointAdd
+                                PlayerStatPoints -= HealthPointAdd
                                 print(f"You have successfully added {HealthPointAdd} points to health!")
                                 HealthPointAdd = 0
                         if PlayerStatDecision == "Defense":
@@ -929,10 +1007,12 @@ while True:
                                 print("You can't add more points than you have! Please Decide the number of points you want to add again.")
                                 DefensePointAdd = int(input("Number: "))
                                 PlayerStatDefense += DefensePointAdd
+                                PlayerStatPoints -= DefensePointAdd
                                 print(f"You have successfully added {DefensePointAdd} points to defense!")
                                 DefensePointAdd = 0
                             elif DefensePointAdd <= PlayerStatPoints:
                                 PlayerStatDefense += DefensePointAdd
+                                PlayerStatPoints -= DefensePointAdd
                                 print(f"You have successfully added {DefensePointAdd} points to defense!")
                                 DefensePointAdd = 0
             elif PlayerStatAction == "Exit":
@@ -942,119 +1022,118 @@ while True:
         if FirstEnemyDefeated == False:
             print("You encountered Enemy number 1! Time to fight them.")
             while True:
-                while DamageAndCombatDoneList[0] != True:
+                while DamageAndCombatDoneList[1] != "Enemy Dead" and DamageAndCombatDoneList[1] != "Player Dead":
                     DamageAndCombatDoneList = Combat(FirstEnemyHealth, PlayerHealth, FirstEnemyDamage, PlayerDamage, FirstEnemyDefense, PlayerDefense, PlayerDefeated, FirstEnemyDefeated)
                     if DamageAndCombatDoneList[0] != True:
                         continue
                     elif DamageAndCombatDoneList[0] == True:
-                        if DamageAndCombatDoneList[2] == "Enemy":
-                            FirstEnemyHealth = DamageAndCombatDoneList[1]
-                            continue
-                        elif DamageAndCombatDoneList[2] == "Player":
-                            PlayerHealth = DamageAndCombatDoneList[1]
-                            continue
-                        elif DamageAndCombatDoneList[3] == "Both":
-                            FirstEnemyHealth = DamageAndCombatDoneList[1]
-                            PlayerHealth = DamageAndCombatDoneList[2]
-                            continue
-                        if DamageAndCombatDoneList[1] == "Player Defeatd":
-                            PlayerDefeated = True
-                            continue
-                        elif DamageAndCombatDoneList[1] == "Enemy Defeated":
-                            FirstEnemyDefeated = True
-                            continue
-                        elif DamageAndCombatDoneList[3] == "Ran Away":
-                            FirstEnemyHealth = DamageAndCombatDoneList[1]
-                            PlayerHealth = DamageAndCombatDoneList[2]
-                            continue
+                        if len(DamageAndCombatDoneList) >= 3:
+                            if DamageAndCombatDoneList[2] == "Enemy":
+                                FirstEnemyHealth = DamageAndCombatDoneList[1]
+                                continue
+                            elif DamageAndCombatDoneList[2] == "Player":
+                                PlayerHealth = DamageAndCombatDoneList[1]
+                                continue
+                            elif DamageAndCombatDoneList[3] == "Both":
+                                FirstEnemyHealth = DamageAndCombatDoneList[1]
+                                PlayerHealth = DamageAndCombatDoneList[2]
+                                continue
+                            elif DamageAndCombatDoneList[3] == "Ran Away":
+                                FirstEnemyHealth = DamageAndCombatDoneList[1]
+                                PlayerHealth = DamageAndCombatDoneList[2]
+                                continue
                 else:
-                    if FirstEnemyDefeated == True:
-                        print("You have successfully defeated Enemy1!")
+                    if DamageAndCombatDoneList[1] == "Enemy Dead":
+                        FirstEnemyDefeated = True
+                        print("You have successfully defeated Enemy1! and gained 8 stat points because of it!")
                         PlayerStatPoints += 8
                         break
-                    elif PlayerDefeated == True:
+                    elif DamageAndCombatDoneList[1] == "Player Dead":
                         print("You have sadly been defeated by Enemy1")
+                        FirstEnemyHealth = 6
+                        PlayerDefeated = True
                 if FirstEnemyDefeated == True:
                     break
                 elif PlayerDefeated == True:
                     PlayerDefeated = False
+                    CurrentPlayerSpace = "Exit/Start"
                     break
     elif CurrentPlayerSpace == "Enemy2":
         if SecondEnemyDefeated == False:
             print("You encountered Enemy number 2! Time to fight them.")
             while True:
-                while DamageAndCombatDoneList[0] != True:
+                while DamageAndCombatDoneList[1] != "Enemy Dead" and DamageAndCombatDoneList[1] != "Player Dead":
                     DamageAndCombatDoneList = Combat(SecondEnemyHealth, PlayerHealth, SecondEnemyDamage, PlayerDamage, SecondEnemyDefense, PlayerDefense, PlayerDefeated, SecondEnemyDefeated)
                     if DamageAndCombatDoneList[0] != True:
                         continue
                     elif DamageAndCombatDoneList[0] == True:
-                        if DamageAndCombatDoneList[3] == "Enemy":
+                        if DamageAndCombatDoneList[2] == "Enemy":
                             SecondEnemyHealth = DamageAndCombatDoneList[1]
-                        elif DamageAndCombatDoneList[3] == "Player":
+                        elif DamageAndCombatDoneList[2] == "Player":
                             PlayerHealth = DamageAndCombatDoneList[1]
                         elif DamageAndCombatDoneList[3] == "Both":
                             SecondEnemyHealth = DamageAndCombatDoneList[1]
                             PlayerHealth = DamageAndCombatDoneList[2]
-                        if DamageAndCombatDoneList[1] == "Player Defeatd":
-                            PlayerDefeated = True
-                        elif DamageAndCombatDoneList[1] == "Enemy Defeated":
-                            SecondEnemyDefeated = True
                         elif DamageAndCombatDoneList[3] == "Ran Away":
                             SecondEnemyHealth = DamageAndCombatDoneList[1]
                             PlayerHealth = DamageAndCombatDoneList[2]
                 else:
-                    if SecondEnemyDefeated == True:
+                    if DamageAndCombatDoneList[1] == "Enemy Dead":
+                        SecondEnemyDefeated = True
                         print("You have successfully defeated Enemy2!")
                         PlayerStatPoints += 8
                         break
-                    elif PlayerDefeated == True:
+                    elif DamageAndCombatDoneList[1] == "Player Dead":
+                        PlayerDefeated = True
                         print("You have sadly been defeated by Enemy2")
+                        SecondEnemyHealth = 6
                 if SecondEnemyDefeated == True:
                     break
                 elif PlayerDefeated == True:
                     PlayerDefeated = False
+                    CurrentPlayerSpace = "Exit/Start"
                     break
     elif CurrentPlayerSpace == "Enemy3":
         if ThirdEnemyDefeated == False:
             print("You encountered Enemy number 3! Time to fight them.")
             while True:
-                while DamageAndCombatDoneList[0] != True:
+                while DamageAndCombatDoneList[1] != "Enemy Dead" and DamageAndCombatDoneList[1] != "Player Dead":
                     DamageAndCombatDoneList = Combat(ThirdEnemyHealth, PlayerHealth, ThirdEnemyDamage, PlayerDamage, ThirdEnemyDefense, PlayerDefense, PlayerDefeated, ThirdEnemyDefeated)
                     if DamageAndCombatDoneList[0] != True:
                         continue
                     elif DamageAndCombatDoneList[0] == True:
-                        if DamageAndCombatDoneList[3] == "Enemy":
+                        if DamageAndCombatDoneList[2] == "Enemy":
                             ThirdEnemyHealth = DamageAndCombatDoneList[1]
-                        elif DamageAndCombatDoneList[3] == "Player":
+                        elif DamageAndCombatDoneList[2] == "Player":
                             PlayerHealth = DamageAndCombatDoneList[1]
                         elif DamageAndCombatDoneList[3] == "Both":
                             ThirdEnemyHealth = DamageAndCombatDoneList[1]
                             PlayerHealth = DamageAndCombatDoneList[2]
-                        if DamageAndCombatDoneList[1] == "Player Defeatd":
-                            PlayerDefeated = True
-                        elif DamageAndCombatDoneList[1] == "Enemy Defeated":
-                            ThirdEnemyDefeated = True
                         elif DamageAndCombatDoneList[3] == "Ran Away":
                             ThirdEnemyHealth = DamageAndCombatDoneList[1]
                             PlayerHealth = DamageAndCombatDoneList[2]
                 else:
-                    if ThirdEnemyDefeated == True:
+                    if DamageAndCombatDoneList[1] == "Enemy Dead":
+                        ThirdEnemyDefeated = True
                         print("You have successfully defeated Enemy3!")
                         PlayerStatPoints += 8
                         break
-                    elif PlayerDefeated == True:
+                    elif DamageAndCombatDoneList[1] == "Player Dead":
                         print("You have sadly been defeated by Enemy3")
+                        ThirdEnemyHealth = 8
+                        PlayerDefeated = True
                 if ThirdEnemyDefeated == True:
                     break
                 elif PlayerDefeated == True:
                     PlayerDefeated = False
+                    CurrentPlayerSpace = "Exit/Start"
                     break
     elif CurrentPlayerSpace == "FinalBoss":
         if FinalBossDefeated == False and FirstEnemyDefeated == True and SecondEnemyDefeated == True and ThirdEnemyDefeated == True:
-            print("You encountered Enemy number 2! Time to fight them.")
+            print("You encountered The Final Boss the final battle is at hand.")
             while True:
-                while DamageAndCombatDoneList[0] != True:
-                    DamageAndCombatDoneList = FinalBossCombat(FinalBossHealth, PlayerHealth, FinalBossDamage, PlayerDamage, FinalBossDefense, PlayerDefense, PlayerDefeated, FinalBossDefeated)
+                while DamageAndCombatDoneList[1] != "Enemy Dead" and DamageAndCombatDoneList[1] != "Player Dead":
+                    DamageAndCombatDoneList = FinalBossCombat(FinalBossHealth, PlayerHealth, FinalBossDamage, PlayerDamage, FinalBossDefense, PlayerDefense, FinalBossDefeated, PlayerDefeated)
                     if DamageAndCombatDoneList[0] != True:
                         continue
                     elif DamageAndCombatDoneList[0] == True:
@@ -1073,14 +1152,18 @@ while True:
                             FinalBossHealth = DamageAndCombatDoneList[1]
                             PlayerHealth = DamageAndCombatDoneList[2]
                 else:
-                    if FinalBossDefeated == True:
+                    if DamageAndCombatDoneList[1] == "Enemy Dead":
                         print("You have successfully defeated The Final Boss and got the exit key!!!")
                         PlayerKeyHolder = "Key"
+                        FinalBossDefeated = True
                         break
-                    elif PlayerDefeated == True:
+                    elif DamageAndCombatDoneList[1] == "Player Dead":
                         print("You have sadly been defeated by The Final Boss.")
-                if SecondEnemyDefeated == True:
+                        FinalBossHealth = 12
+                        PlayerDefeated = True
+                if FinalBossDefeated == True:
                     break
                 elif PlayerDefeated == True:
                     PlayerDefeated = False
+                    CurrentPlayerSpace = "Exit/Start"
                     break
