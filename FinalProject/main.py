@@ -68,13 +68,11 @@ PlayerHasDefended = False
 
 PlayerStartingHealth = 5
 
-EuippedItem = "Stick"
+EquippedItem = "Stick"
 
 ItemBelt = ["Stick"]
 
 PlayerStatHealth = 1
-
-PlayerHealth = PlayerStartingHealth + PlayerStatHealth
 
 PlayerStatAttack = 1
 
@@ -688,3 +686,63 @@ for x in GameMap:
     print(x)
 
 print(f"You have been started at {CurrentPlayerSpace}!")
+
+while True:
+    if EquippedItem == "Stick":
+        WeaponStatDamage = 1
+    elif EquippedItem == "Sword":
+        WeaponStatDamage = 4
+
+    PlayerAttack = PlayerStatAttack + WeaponStatDamage
+    PlayerHealth = PlayerStartingHealth + PlayerStatHealth
+    PlayerDefense = PlayerStatDefense
+
+    for x in GameMap:
+        print(x)
+
+    if PlayerKeyHolder == "Key" and CurrentPlayerSpace == "Exit/Start":
+        print("You have won the game congrats!")
+        break
+
+    if CurrentPlayerSpace == "Chest1":
+        ChestList1 = ChestOpener(CurrentPlayerSpace, FirstChestOpened)
+        if FirstChestOpened == False:
+            PlayerStatPoints += ChestList1[0]
+            FirstChestOpened = ChestList1[1]
+        elif FirstChestOpened == True:
+            pass
+    elif CurrentPlayerSpace == "Chest2":
+        ChestList2 = ChestOpener(CurrentPlayerSpace, SecondChestOpened)
+        if SecondChestOpened == False:
+            PlayerStatPoints += ChestList2[0]
+            SecondChestOpened = ChestList2[1]
+        if SecondChestOpened == True:
+            pass
+    elif CurrentPlayerSpace == "Chest3":
+        ChestList3 = ChestOpener(CurrentPlayerSpace, ThirdChestOpened)
+        if ThirdChestOpened == False:
+            PlayerStatPoints += ChestList3[0]
+            ThirdChestOpened = ChestList3[1]
+        if ThirdChestOpened == True:
+            pass
+    elif CurrentPlayerSpace == "Chest4":
+        ChestList4 = ChestOpener(CurrentPlayerSpace, FourthChestOpened)
+        if FourthChestOpened == False:
+            PlayerStatPoints += ChestList4[0]
+            FourthChestOpened = ChestList4[1]
+        if FourthChestOpened == True:
+            pass
+    elif CurrentPlayerSpace == "Chest5":
+        ChestList5 = ChestOpener(CurrentPlayerSpace, FifthChestOpened)
+        if FifthChestOpened == False:
+            ItemBelt.append(ChestList5[0])
+            FifthChestOpened = ChestList5[1]
+        if FifthChestOpened == True:
+            pass
+    
+    PlayerDecision = str(input("Do you want to move, check your inventory or check / use your stats?? (Type Move for movement, Inventory for inventory checking, and Stats for Stats checking / using them): "))
+
+    if PlayerDecision == "Move":
+        SpacePlayerIsMovingTo = str(input("Which space do you want to move to?: "))
+        CurrentPlayerSpace = Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace)
+        print(f"You have moved to {CurrentPlayerSpace}!")
