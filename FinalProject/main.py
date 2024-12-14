@@ -404,7 +404,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
     else:
         print("Unexpected Error Has Occurred Please Try Again")
 
-def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar, EnemyDefenseFVar, PlayerDefenseFVar):
+def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar, EnemyDefenseFVar, PlayerDefenseFVar, PlayerDefeatedFVar, EnemyDefeatedFVar):
     DamageAndCombatDoneListFVar = []
     PlayerHasDoneCombatFVar == False
     if EnemyHealthFVar == 0:
@@ -466,8 +466,12 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                     return DamageAndCombatDoneListFVar
                 elif EnemyWasAbleToRunAwayFVar == 2:
                     print("The enemy was able to run away.")
+                    EnemyRanAway = "Ran Away"
                     PlayerHasDoneCombatFVar = True
                     DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
+                    DamageAndCombatDoneListFVar.append(EnemyHealthFVar)
+                    DamageAndCombatDoneListFVar.append(PlayerHealthFVar)
+                    DamageAndCombatDoneListFVar.append(EnemyRanAway)
                     return DamageAndCombatDoneListFVar
             else:
                 print("An unexpected error has occurred please try again")
@@ -500,14 +504,15 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                     return DamageAndCombatDoneListFVar
             elif PlayerWasAbleToRunAway == 2:
                 print("You have successfully run away!")
+                PlayerRanAway = "Ran Away"
                 PlayerHasDoneCombatFVar = True
                 DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
                 DamageAndCombatDoneListFVar.append(EnemyHealthFVar)
                 DamageAndCombatDoneListFVar.append(PlayerHealthFVar)
-                DamageAndCombatDoneListFVar.append("Both")
+                DamageAndCombatDoneListFVar.append(PlayerRanAway)
                 return DamageAndCombatDoneListFVar
 
-def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, PlayerDamageFVar2, EnemyDefenseFVar2, PlayerDefenseFVar2):
+def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, PlayerDamageFVar2, EnemyDefenseFVar2, PlayerDefenseFVar2, PlayerDefeatedFVar2, FinalBossDefeatedFVar):
     DamageAndCombatDoneListFVar2 = []
     PlayerHasDoneCombatFVar2 == False
     if EnemyHealthFVar2 == 0:
@@ -682,6 +687,8 @@ FourthChestOpened = False
 
 FifthChestOpened = False
 
+PlayerDefeated = False
+
 for x in GameMap:
     print(x)
 
@@ -693,7 +700,7 @@ while True:
     elif EquippedItem == "Sword":
         WeaponStatDamage = 4
 
-    DamageAndCombatDoneList = []
+    DamageAndCombatDoneList = ["", "", "", ""]
     PlayerDamage = PlayerStatDamage + WeaponStatDamage
     PlayerHealth = PlayerStartingHealth + PlayerStatHealth
     PlayerDefense = PlayerStatDefense
@@ -893,3 +900,143 @@ while True:
                         elif PlayerStatDecision == "Exit":
                             print("Hope you had a succesful time using stats!")
                             break
+    if CurrentPlayerSpace == "Enemy1":
+        if FirstEnemyDefeated == False:
+            print("You encountered Enemy number 1! Time to fight them.")
+            while True:
+                while DamageAndCombatDoneList[0] != True:
+                    DamageAndCombatDoneList = Combat(FirstEnemyHealth, PlayerHealth, FirstEnemyDamage, PlayerDamage, FirstEnemyDefense, PlayerDefense, PlayerDefeated, FirstEnemyDefeated)
+                    if DamageAndCombatDoneList[0] != True:
+                        continue
+                    elif DamageAndCombatDoneList[0] == True:
+                        if DamageAndCombatDoneList[3] == "Enemy":
+                            FirstEnemyHealth = DamageAndCombatDoneList[1]
+                        elif DamageAndCombatDoneList[3] == "Player":
+                            PlayerHealth = DamageAndCombatDoneList[1]
+                        elif DamageAndCombatDoneList[3] == "Both":
+                            FirstEnemyHealth = DamageAndCombatDoneList[1]
+                            PlayerHealth = DamageAndCombatDoneList[2]
+                        if DamageAndCombatDoneList[1] == "Player Defeatd":
+                            PlayerDefeated = True
+                        elif DamageAndCombatDoneList[1] == "Enemy Defeated":
+                            FirstEnemyDefeated = True
+                        elif DamageAndCombatDoneList[3] == "Ran Away":
+                            FirstEnemyHealth = DamageAndCombatDoneList[1]
+                            PlayerHealth = DamageAndCombatDoneList[2]
+                else:
+                    if FirstEnemyDefeated == True:
+                        print("You have successfully defeated Enemy1!")
+                        PlayerStatPoints += 8
+                        break
+                    elif PlayerDefeated == True:
+                        print("You have sadly been defeated by Enemy1")
+                if FirstEnemyDefeated == True:
+                    break
+                elif PlayerDefeated == True:
+                    PlayerDefeated = False
+                    break
+    elif CurrentPlayerSpace == "Enemy2":
+        if SecondEnemyDefeated == False:
+            print("You encountered Enemy number 2! Time to fight them.")
+            while True:
+                while DamageAndCombatDoneList[0] != True:
+                    DamageAndCombatDoneList = Combat(SecondEnemyHealth, PlayerHealth, SecondEnemyDamage, PlayerDamage, SecondEnemyDefense, PlayerDefense, PlayerDefeated, SecondEnemyDefeated)
+                    if DamageAndCombatDoneList[0] != True:
+                        continue
+                    elif DamageAndCombatDoneList[0] == True:
+                        if DamageAndCombatDoneList[3] == "Enemy":
+                            SecondEnemyHealth = DamageAndCombatDoneList[1]
+                        elif DamageAndCombatDoneList[3] == "Player":
+                            PlayerHealth = DamageAndCombatDoneList[1]
+                        elif DamageAndCombatDoneList[3] == "Both":
+                            SecondEnemyHealth = DamageAndCombatDoneList[1]
+                            PlayerHealth = DamageAndCombatDoneList[2]
+                        if DamageAndCombatDoneList[1] == "Player Defeatd":
+                            PlayerDefeated = True
+                        elif DamageAndCombatDoneList[1] == "Enemy Defeated":
+                            SecondEnemyDefeated = True
+                        elif DamageAndCombatDoneList[3] == "Ran Away":
+                            SecondEnemyHealth = DamageAndCombatDoneList[1]
+                            PlayerHealth = DamageAndCombatDoneList[2]
+                else:
+                    if SecondEnemyDefeated == True:
+                        print("You have successfully defeated Enemy2!")
+                        PlayerStatPoints += 8
+                        break
+                    elif PlayerDefeated == True:
+                        print("You have sadly been defeated by Enemy2")
+                if SecondEnemyDefeated == True:
+                    break
+                elif PlayerDefeated == True:
+                    PlayerDefeated = False
+                    break
+    elif CurrentPlayerSpace == "Enemy3":
+        if ThirdEnemyDefeated == False:
+            print("You encountered Enemy number 3! Time to fight them.")
+            while True:
+                while DamageAndCombatDoneList[0] != True:
+                    DamageAndCombatDoneList = Combat(ThirdEnemyHealth, PlayerHealth, ThirdEnemyDamage, PlayerDamage, ThirdEnemyDefense, PlayerDefense, PlayerDefeated, ThirdEnemyDefeated)
+                    if DamageAndCombatDoneList[0] != True:
+                        continue
+                    elif DamageAndCombatDoneList[0] == True:
+                        if DamageAndCombatDoneList[3] == "Enemy":
+                            ThirdEnemyHealth = DamageAndCombatDoneList[1]
+                        elif DamageAndCombatDoneList[3] == "Player":
+                            PlayerHealth = DamageAndCombatDoneList[1]
+                        elif DamageAndCombatDoneList[3] == "Both":
+                            ThirdEnemyHealth = DamageAndCombatDoneList[1]
+                            PlayerHealth = DamageAndCombatDoneList[2]
+                        if DamageAndCombatDoneList[1] == "Player Defeatd":
+                            PlayerDefeated = True
+                        elif DamageAndCombatDoneList[1] == "Enemy Defeated":
+                            ThirdEnemyDefeated = True
+                        elif DamageAndCombatDoneList[3] == "Ran Away":
+                            ThirdEnemyHealth = DamageAndCombatDoneList[1]
+                            PlayerHealth = DamageAndCombatDoneList[2]
+                else:
+                    if ThirdEnemyDefeated == True:
+                        print("You have successfully defeated Enemy3!")
+                        PlayerStatPoints += 8
+                        break
+                    elif PlayerDefeated == True:
+                        print("You have sadly been defeated by Enemy3")
+                if ThirdEnemyDefeated == True:
+                    break
+                elif PlayerDefeated == True:
+                    PlayerDefeated = False
+                    break
+    elif CurrentPlayerSpace == "FinalBoss":
+        if FinalBossDefeated == False and FirstEnemyDefeated == True and SecondEnemyDefeated == True and ThirdEnemyDefeated == True:
+            print("You encountered Enemy number 2! Time to fight them.")
+            while True:
+                while DamageAndCombatDoneList[0] != True:
+                    DamageAndCombatDoneList = FinalBossCombat(FinalBossHealth, PlayerHealth, FinalBossDamage, PlayerDamage, FinalBossDefense, PlayerDefense, PlayerDefeated, FinalBossDefeated)
+                    if DamageAndCombatDoneList[0] != True:
+                        continue
+                    elif DamageAndCombatDoneList[0] == True:
+                        if DamageAndCombatDoneList[3] == "Enemy":
+                            FinalBossHealth = DamageAndCombatDoneList[1]
+                        elif DamageAndCombatDoneList[3] == "Player":
+                            PlayerHealth = DamageAndCombatDoneList[1]
+                        elif DamageAndCombatDoneList[3] == "Both":
+                            FinalBossHealth = DamageAndCombatDoneList[1]
+                            PlayerHealth = DamageAndCombatDoneList[2]
+                        if DamageAndCombatDoneList[1] == "Player Defeatd":
+                            PlayerDefeated = True
+                        elif DamageAndCombatDoneList[1] == "Enemy Defeated":
+                            FinalBossDefeated = True
+                        elif DamageAndCombatDoneList[3] == "Ran Away":
+                            FinalBossHealth = DamageAndCombatDoneList[1]
+                            PlayerHealth = DamageAndCombatDoneList[2]
+                else:
+                    if FinalBossDefeated == True:
+                        print("You have successfully defeated The Final Boss and got the exit key!!!")
+                        PlayerKeyHolder = "Key"
+                        break
+                    elif PlayerDefeated == True:
+                        print("You have sadly been defeated by The Final Boss.")
+                if SecondEnemyDefeated == True:
+                    break
+                elif PlayerDefeated == True:
+                    PlayerDefeated = False
+                    break
