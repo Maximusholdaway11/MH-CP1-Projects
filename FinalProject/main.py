@@ -124,6 +124,7 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
             print("Can't move there it's a wall.")
         else:
             print("Unexpected Error try again.")
+            return CurrentPlayerSpace
     elif CurrentPlayerSpace == "Enemy1":
         if SpacePlayerIsMovingTo == "Exit/Start":
             CurrentPlayerSpace = "Exit/Start"
@@ -467,12 +468,12 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
             EnemyDecision = random.randint(1, 5)
             if EnemyDecision >= 4:
                 EnemyDodgedAttack = random.randint(1, 10)
-                if EnemyDodgedAttack >= 3:
+                if EnemyDodgedAttack <= 2:
                     print("The enemy dodged the attack!")
                     PlayerHasDoneCombatFVar = True
                     DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
                     return DamageAndCombatDoneListFVar
-                elif EnemyDodgedAttack <= 2:
+                else:
                     EnemyDamageReduction = PlayerDamageFVar - EnemyDefenseFVar
                     EnemyHealthFVar -= EnemyDamageReduction
                     print(f"The enemy has defended but you have still hit the enemy for {EnemyDamageReduction} damage and the enemy now has {EnemyHealthFVar} health!")
@@ -727,12 +728,12 @@ FifthChestOpened = False
 
 PlayerDefeated = False
 
-for x in GameMap:
-    print(x)
-
 print(f"You have been started at {CurrentPlayerSpace}!")
 
+loop_num = 0
 while True:
+    loop_num += 1
+    print(f'Game Loop {loop_num}')
     if EquippedItem == "Stick":
         WeaponStatDamage = 1
     elif EquippedItem == "Sword":
