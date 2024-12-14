@@ -894,7 +894,6 @@ while True:
                 print(f"These are your current stats Health is {PlayerStatHealth}, Damage is {PlayerStatDamage}, and Defense is {PlayerStatDefense}.")
             elif PlayerStatAction == "Points":
                 if PlayerStatPoints > 0:
-                    while True:
                         PlayerStatDecision = str(input(f"What stat do you want to add to? Also you currently have This many stat points {PlayerStatPoints}. (Type Damage for damage, Health for health, and Defense for defense)"))
                         if PlayerStatDecision == "Damage":
                             print("How much do you want to add to Damage?")
