@@ -58,7 +58,7 @@ Space24 = "Wall3"
 
 Space25 = "FinalBoss"
 
-DamageAndCombatDoneList = []
+DamageAndCombatDoneList = ["", "", "", ""]
 
 PlayerStatPoints = 0
 
@@ -407,24 +407,24 @@ def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
         print("Unexpected Error Has Occurred Please Try Again")
 
 def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar, EnemyDefenseFVar, PlayerDefenseFVar):
+    DamageAndCombatDoneListFVar = []
     PlayerHasDoneCombatFVar == False
     if EnemyHealthFVar == 0:
-        EnemyDefeated = "Enemy Dead"
+        EnemyDefeatedFVar = "Enemy Dead"
     elif PlayerHealthFVar == 0:
-        PlayerDefeated = "Player Dead"
-    if EnemyDefeated == "Enemy Dead":
+        PlayerDefeatedFVar = "Player Dead"
+    if EnemyDefeatedFVar == "Enemy Dead":
         PlayerHasDoneCombatFVar = True
         DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-        DamageAndCombatDoneListFVar.append(EnemyDefeated)
+        DamageAndCombatDoneListFVar.append(EnemyDefeatedFVar)
         return DamageAndCombatDoneListFVar
-    elif PlayerDefeated == "Player Dead":
+    elif PlayerDefeatedFVar == "Player Dead":
         PlayerHasDoneCombatFVar = True
         DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-        DamageAndCombatDoneListFVar.append(PlayerDefeated)
+        DamageAndCombatDoneListFVar.append(PlayerDefeatedFVar)
         return DamageAndCombatDoneListFVar
-    elif EnemyDefeated != "Enemy Dead" and PlayerDefeated != "Player Dead":
+    elif EnemyDefeatedFVar != "Enemy Dead" and PlayerDefeatedFVar != "Player Dead":
         PlayerCombatDecision = str(input(f"Do you want to Attack, Defend, or Run Away? Also Your health is at {PlayerHealthFVar} The enemy's health is at {EnemyHealthFVar}"))
-        DamageAndCombatDoneListFVar = []
         PlayerHasDoneCombatFVar = False
         PlayerHasDefendedFVar = False
         if PlayerCombatDecision == "Attack":
@@ -509,3 +509,182 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                 DamageAndCombatDoneListFVar.append("Both")
                 return DamageAndCombatDoneListFVar
 
+def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, PlayerDamageFVar2, EnemyDefenseFVar2, PlayerDefenseFVar2):
+    DamageAndCombatDoneListFVar2 = []
+    PlayerHasDoneCombatFVar2 == False
+    if EnemyHealthFVar2 == 0:
+        FinalBossDefeatedFVar = "Enemy Dead"
+    elif PlayerHealthFVar2 == 0:
+        PlayerDefeatedFVar2 = "Player Dead"
+    if FinalBossDefeatedFVar == "Enemy Dead":
+        PlayerHasDoneCombatFVar2 = True
+        DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar2)
+        DamageAndCombatDoneListFVar2.append(FinalBossDefeatedFVar)
+        return DamageAndCombatDoneListFVar2
+    elif PlayerDefeatedFVar2 == "Player Dead":
+        PlayerHasDoneCombatFVar2 = True
+        DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar2)
+        DamageAndCombatDoneListFVar2.append(PlayerDefeatedFVar2)
+        return DamageAndCombatDoneListFVar2
+    elif FinalBossDefeatedFVar != "Enemy Dead" and PlayerDefeatedFVar2 != "Player Dead":
+        PlayerCombatDecision = str(input(f"Do you want to Attack, Defend, or Run Away? Also Your health is at {PlayerHealthFVar2} The enemy's health is at {EnemyHealthFVar2}"))
+        PlayerHasDoneCombatFVar2 = False
+        PlayerHasDefendedFVar2 = False
+        if PlayerCombatDecision == "Attack":
+            FinalBossDecision = random.randint(1, 5)
+            if FinalBossDecision <= 2:
+                FinalBossDodgedAttack = random.randint(1, 10)
+                if FinalBossDodgedAttack >= 3:
+                    print("The enemy dodged the attack!")
+                    PlayerHasDoneCombatFVar2 = True
+                    DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar2)
+                    return DamageAndCombatDoneListFVar2
+                elif FinalBossDodgedAttack <= 2:
+                    EnemyDamageReductionFVar = PlayerDamageFVar2 - EnemyDefenseFVar2
+                    EnemyHealthFVar2 -= EnemyDamageReductionFVar
+                    print(f"The enemy has defended but you have still hit the enemy for {EnemyDamageReductionFVar} damage and the enemy now has {EnemyHealthFVar2} health!")
+                    PlayerHasDoneCombatFVar2 = True
+                    DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar)
+                    DamageAndCombatDoneListFVar2.append(EnemyHealthFVar2)
+                    DamageAndCombatDoneListFVar2.append("Enemy")
+                    return DamageAndCombatDoneListFVar2
+            elif FinalBossDecision >= 3:
+                EnemyHealthFVar2 -= PlayerDamageFVar2
+                print(f"You have hit the enemy for {PlayerDamageFVar2} damage and the enemy now has {EnemyHealthFVar2} health!")
+                PlayerHealthFVar2 -= EnemyDamageFVar2
+                print(f"The enemy has hit you for {EnemyDamageFVar2} damage and you now have {PlayerHealthFVar2} health.")
+                PlayerHasDoneCombatFVar = True
+                DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar)
+                DamageAndCombatDoneListFVar2.append(EnemyHealthFVar2)
+                DamageAndCombatDoneListFVar2.append(PlayerHealthFVar2)
+                DamageAndCombatDoneListFVar2.append("Both")
+                return DamageAndCombatDoneListFVar2
+        elif PlayerCombatDecision == "Defense":
+            PlayerDodgedAttack = random.randint(1, 10)
+            if PlayerDodgedAttack >= 3:
+                PlayerDamageReductionFVar = EnemyDamageFVar2 - PlayerDefenseFVar2
+                PlayerHealthFVar2 -= PlayerDamageReductionFVar
+                print(f"You have successfully defended and the enemy only did {PlayerDamageReductionFVar} damage! and you now have {PlayerHealthFVar2} health.")
+                PlayerHasDefendedFVar2 = True
+                DamageAndCombatDoneListFVar2.append(PlayerHasDefendedFVar2)
+                DamageAndCombatDoneListFVar2.append(PlayerHealthFVar2)
+                DamageAndCombatDoneListFVar2.append("Player")
+                return DamageAndCombatDoneListFVar2
+            elif PlayerDodgedAttack <= 2:
+                print("You dodged their attack!")
+                PlayerHasDefendedFVar2 = True
+                DamageAndCombatDoneListFVar2.append(PlayerHasDefendedFVar2)
+                return DamageAndCombatDoneListFVar2
+        elif PlayerCombatDecision == "Run Awway":
+            PlayerWasAbleToRunAway = random.randint(1, 2)
+            if PlayerWasAbleToRunAway == 1:
+                if EnemyDecision <= 2:
+                    PlayerHealthFVar2 -= EnemyDamageFVar2
+                    print(f"You have failed to run away and the enemy has hit you for {EnemyDamageFVar2} damage. and you now have {PlayerHealthFVar2} health.")
+                    PlayerHasDoneCombatFVar2 = True
+                    DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar2)
+                    DamageAndCombatDoneListFVar2.append(PlayerHealthFVar2)
+                    DamageAndCombatDoneListFVar2.append("Player")
+                    return DamageAndCombatDoneListFVar2
+            elif PlayerWasAbleToRunAway == 2:
+                print("You have successfully run away!")
+                PlayerHasDoneCombatFVar2 = True
+                DamageAndCombatDoneListFVar2.append(PlayerHasDoneCombatFVar2)
+                DamageAndCombatDoneListFVar2.append(EnemyHealthFVar2)
+                DamageAndCombatDoneListFVar2.append(PlayerHealthFVar2)
+                DamageAndCombatDoneListFVar2.append("Both")
+                return DamageAndCombatDoneListFVar2
+
+ChestList1 = ["", ""]
+
+ChestList2 = ["", ""]
+
+ChestList3 = ["", ""]
+
+ChestList4 = ["", ""]
+
+ChestList5 = ["", ""]
+
+def ChestOpener(CurrentPlayerSpaceFVar, ChestOpened):
+    ChestFVarList = []
+    PointAmountGiven = 0
+    if CurrentPlayerSpaceFVar == "Chest1":
+        if ChestOpened == False:
+            print("You have found the first chest inside it gives you one stat point!")
+            PointAmountGiven = 1
+            ChestFVarList = [PointAmountGiven, True]
+            return ChestFVarList
+        elif ChestOpened == True:
+            pass
+    if CurrentPlayerSpaceFVar == "Chest2":
+        if ChestOpened == False:
+            print("You have found the second chest inside it gives you two stat points!")
+            PointAmountGiven = 2
+            ChestFVarList = [PointAmountGiven, True]
+            return ChestFVarList
+        elif ChestOpened == True:
+            pass
+    if CurrentPlayerSpaceFVar == "Chest3":
+        if ChestOpened == False:
+            print("You have found the first chest inside it gives you three stat points!")
+            PointAmountGiven = 3
+            ChestFVarList = [PointAmountGiven, True]
+            return ChestFVarList
+        elif ChestOpened == True:
+            pass
+    if CurrentPlayerSpaceFVar == "Chest4":
+        if ChestOpened == False:
+            print("You have found the first chest inside it gives you four stat points!")
+            PointAmountGiven = 4
+            ChestFVarList = [PointAmountGiven, True]
+            return ChestFVarList
+        elif ChestOpened == True:
+            pass
+    if CurrentPlayerSpaceFVar == "Chest5":
+        if ChestOpened == False:
+            print("You have found the fifth chest inside it gives you a sword!!!")
+            ChestFVarList = ["Sword", True]
+            return ChestFVarList
+        elif ChestOpened == True:
+            pass
+
+GameMapRow1 = [Space1, Space2, Space3, Space4, Space5]
+
+GameMapRow2 = [Space6, Space7, Space8, Space9, Space10]
+
+GameMapRow3 = [Space11, Space12, Space13, Space14, Space15]
+
+GameMapRow4 = [Space16, Space17, Space18, Space19, Space20]
+
+GameMapRow5 = [Space21, Space22, Space23, Space24, Space25]
+
+GameMapCollumn1 = [Space1, Space6, Space11, Space16, Space21]
+
+GameMapCollumn2 = [Space2, Space7, Space12, Space17, Space22]
+
+GameMapCollumn3 = [Space3, Space8, Space13, Space18, Space23]
+
+GameMapCollumn4 = [Space4, Space9, Space14, Space19, Space24]
+
+GameMapCollumn5 = [Space5, Space10, Space15, Space20, Space25]
+
+GameMap = [GameMapRow1, GameMapRow2, GameMapRow3, GameMapRow4, GameMapRow5]
+
+CurrentPlayerSpace = "Exit/Start"
+
+PlayerKeyHolder = ""
+
+FirstChestOpened = False
+
+SecondChestOpened = False
+
+ThirdChestOpened = False
+
+FourthChestOpened = False
+
+FifthChestOpened = False
+
+for x in GameMap:
+    print(x)
+
+print(f"You have been started at {CurrentPlayerSpace}!")
