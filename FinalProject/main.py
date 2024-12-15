@@ -886,12 +886,15 @@ while True:
                             print("You can't swap out your sword for your sword.")
                             continue
                         elif EquippedItem == "Stick":
-                            EquippedItem == "Sword"
+                            EquippedItem = "Sword"
                             InventoryList.remove("Sword")
-                            InventoryList.append("Stick")
+                            ItemBelt.append("Sword")
+                            ItemBelt.remove("Stick")
                             print("You have succesfully swapped out your stick for your sword!")
                         elif EquippedItem == "Nothing":
-                            print("You can't swap out nothing for a sword!")
+                            EquippedItem = ("Sword")
+                            InventoryList.remove("Sword")
+                            print("You have swapped out nothing for your stick so you basically just took it out!")
                             continue
                         else:
                             print("Unexpected error try again.")
@@ -901,12 +904,14 @@ while True:
                             print("You can't swap out your stick for your stick.")
                             continue
                         elif EquippedItem == "Sword":
-                            EquippedItem == "Stick"
+                            EquippedItem = "Stick"
                             InventoryList.remove("Stick")
                             InventoryList.append("Sword")
                             print("You have succesfully swapped out your sword for your stick!")
                         elif EquippedItem == "Nothing":
-                            print("You can't swap out nothing for a stick!")
+                            EquippedItem = ("Stick")
+                            InventoryList.remove("Stick")
+                            print("You have swapped out nothing for your stick so you basically just took it out!")
                             continue
                         else:
                             print("Unexpected error try again.")
@@ -934,33 +939,24 @@ while True:
                                 ItemBelt.append("Stick")
                                 EquippedItem = "Stick"
                                 print("You have succesfully added your sword to your inventory and equipped your stick!")
-                            elif ItemBelt in ["Stick"]:
+                            elif ItemBelt in "Stick":
                                 EquippedItem = "Stick"
                                 print("You have succesfully added your sword to your inventory and equipped your stick!")
-                        elif EquippedItem in ["Nothing"]:
+                        elif EquippedItem in "Nothing":
                             print("You can't store nothing.")
                             continue
                     elif PlayerStoreAction == "Stick":
-                        if EquippedItem in ["Sword"]:
-                            if InventoryList not in ["Stick"]:
+                        if EquippedItem in "Sword":
+                            if ItemBelt in "Stick":
                                 ItemBelt.remove("Stick")
                                 InventoryList.append("Stick")
-                                print("You have successfully added your stick to your inventory!")
-                            elif InventoryList in ["Sword"]:
-                                print("You can't store your stick it's already in your inventory.")
-                        elif EquippedItem in ["Stick"]:
+                                print("You have succesfully stored your stick!")
+                        elif EquippedItem in "Stick":
                             ItemBelt.remove("Stick")
                             InventoryList.append("Stick")
-                            EquippedItem = "Nothing"
-                            if InventoryList in ["Sword"]:
-                                InventoryList.remove("Sword")
-                                ItemBelt.append("Sword")
-                                EquippedItem = "Sword"
-                                print("You have succesfully added your stick to your inventory and equipped your sword!")
-                            elif ItemBelt in ["Sword"]:
-                                EquippedItem = "Sword"
-                                print("You have succesfully added your stick to your inventory and equipped your sword!")
-                        elif EquippedItem in ["Nothing"]:
+                            EquippedItem = "Sword"
+                            print("You have successfully stored your stick and equipped your sword!")
+                        elif EquippedItem in "Nothing":
                             print("You can't store nothing.")
                             continue
                 elif len(ItemBelt) == 1 and ItemBelt not in ["Sword"]:
@@ -974,7 +970,7 @@ while True:
                 break
     elif PlayerDecision == "Stats":
         while True:
-            PlayerStatAction = str(input("Do you want to check your stats, use your stat points, or exit your stats? (To check stats type Stats, to use stat points type Points, to exit type Exit): "))
+            PlayerStatAction = str(input(f"Do you want to check your stats, use your stat points, or exit your stats? (To check stats type Stats, to use stat points type Points, to exit type Exit) You currently have {PlayerStatPoints} Stat Points: "))
             if PlayerStatAction == "Stats":
                 print(f"These are your current stats Health is {PlayerStatHealth}, Damage is {PlayerStatDamage}, and Defense is {PlayerStatDefense}.")
             elif PlayerStatAction == "Points":
