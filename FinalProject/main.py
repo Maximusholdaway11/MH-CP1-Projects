@@ -1,8 +1,10 @@
 #Max Holdaway Final Project
 
+import random as random
+
 print("This is my adventure game, have a good time!")
 
-print("For movement simply choose a space that you are right next to. Also walls will block you when trying to move.")
+print("For movement simply choose direction to move in. Also walls will block you when trying to move.")
 
 print("The Stick gives you a +1 attack bonus and the other item you may get gives a +4 in attack bonus.")
 
@@ -16,181 +18,94 @@ print("")
 
 print("You have been trapped in a cave and you need to get the key from the Boss to escape!")
 
-import random as random
-
 InventoryList = []
 
 Space1 = "Exit/Start"
-
 Space2 = "Enemy1"
-
 Space3 = "Space3"
-
 Space4 = "Space4"
-
 Space5 = "Chest4"
-
 Space6 = "Space6"
-
 Space7 = "Wall4"
-
 Space8 = "Space8"
-
 Space9 = "Wall1"
-
 Space10 = "Space10"
-
 Space11 = "Space11"
-
 Space12 = "Wall6"
-
 Space13 = "Chest5"
-
 Space14 = "Wall2"
-
 Space15 = "Chest3"
-
 Space16 = "Space16"
-
 Space17 = "Enemy2"
-
 Space18 = "Space18"
-
 Space19 = "Enemy3"
-
 Space20 = "Space20"
-
 Space21 = "Chest1"
-
 Space22 = "Wall5"
-
 Space23 = "Chest2"
-
 Space24 = "Wall3"
-
 Space25 = "FinalBoss"
 
 DamageAndCombatDoneList = ["", "", "", ""]
 
 PlayerStatPoints = 0
-
 PlayerHasDoneCombat = False
-
 PlayerHasDefended = False
-
 EquippedItem = "Stick"
-
 PlayerStatHealth = 6
-
 PlayerStatDamage = 1
-
 PlayerStatDefense = 1
 
 FirstEnemyHealth = 6
-
 FirstEnemyDamage = 2
-
 FirstEnemyDefense = 0
-
 FirstEnemyDefeated = False
 
 SecondEnemyHealth = 6
-
 SecondEnemyDamage = 4
-
 SecondEnemyDefense = 2
-
 SecondEnemyDefeated = False
 
 ThirdEnemyHealth = 8
-
 ThirdEnemyDamage = 5
-
 ThirdEnemyDefense = 4
-
 ThirdEnemyDefeated = False
 
 FinalBossHealth = 12
-
 FinalBossDamage = 8
-
 FinalBossDefense = 6
-
 FinalBossDefeated = False
 
 EnemyDecision = 0
 
 def GetMapSpace(CurrentPlayerSpaceFVar2, GameMapFVar):
-    SpecificList = []
-    MapSpace = ""
-    for x in GameMapFVar:
-        SpecificList = x[CurrentPlayerSpaceFVar2[0]]
-        for y in SpecificList:
-            MapSpace = y[CurrentPlayerSpaceFVar2[1]]
-    return MapSpace
+    return GameMapFVar[CurrentPlayerSpaceFVar2[0]][CurrentPlayerSpaceFVar2[1]]
 
-def Movement(PlayerMovementDirectionFVar, CurrentPlayerSpaceFVar):
-    if PlayerMovementDirectionFVar == "Left":
-        if CurrentPlayerSpaceFVar == [1, 2]:
-            print("You can't move to the left there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [2, 2]:
-            print("You can't move to the left there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [4, 2]:
-            print("You can't move to the left there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [1, 4]:
-            print("You can't move to the left there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [2, 4]:
-            print("You can't move to the left there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [4, 4]:
-            print("You can't move to the left there's a wall right there.")
-        else:
-            if CurrentPlayerSpaceFVar[1] > 0:
-                CurrentPlayerSpaceFVar[1] += 1
-            elif CurrentPlayerSpaceFVar == 0:
-                print("You can't move left anymore you reached the wall of the cave.")
-    elif PlayerMovementDirectionFVar == "Right":
-        if CurrentPlayerSpaceFVar == [1, 2]:
-            print("You can't move to the right there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [2, 2]:
-            print("You can't move to the right there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [4, 2]:
-            print("You can't move to the right there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [1, 0]:
-            print("You can't move to the right there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [2, 0]:
-            print("You can't move to the right there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [4, 0]:
-            print("You can't move to the right there's a wall right there.")
-        else:
-            if CurrentPlayerSpaceFVar[1] < 4:
-                CurrentPlayerSpaceFVar[1] -= 1
-            elif CurrentPlayerSpaceFVar == 4:
-                print("You can't move right anymore you reached the wall of the cave.")
-    elif PlayerMovementDirectionFVar == "Up":
-        if CurrentPlayerSpaceFVar == [3, 1]:
-            print("You can't move up there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [3, 3]:
-            print("You can't move up there's a wall right there.")
-        else:
-            if CurrentPlayerSpaceFVar[0] > 0:
-                CurrentPlayerSpaceFVar[0] -= 1
-            elif CurrentPlayerSpaceFVar == 0:
-                print("You can't move up anymore you reached the wall of the cave.")
-    elif PlayerMovementDirectionFVar == "Down":
-        if CurrentPlayerSpaceFVar == [3, 1]:
-            print("You can't move down there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [3, 3]:
-            print("You can't move down there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [0, 1]:
-            print("You can't move down there's a wall right there.")
-        elif CurrentPlayerSpaceFVar == [0, 3]:
-            print("You can't move down there's a wall right there.")
-        else:
-            if CurrentPlayerSpaceFVar[0] < 4:
-                CurrentPlayerSpaceFVar[0] += 1
-            elif CurrentPlayerSpaceFVar == 4:
-                print("You can't move down anymore you reached the wall of the cave.")
+def PlayerCanMoveInSpace(CurrentPlayerSpaceFVar, GameMapFVar):
+    if (
+        (CurrentPlayerSpaceFVar[0] not in [0,1,2,3,4]) or
+        (CurrentPlayerSpaceFVar[1] not in [0,1,2,3,4]) or
+        GetMapSpace(CurrentPlayerSpaceFVar, GameMapFVar).startswith('Wall') 
+    ):
+        return False
+    return True
 
+def Movement(PlayerMoveDirectionFVar, CurrentPlayerSpaceFVar, GameMapFVar):
+    PlayerMapSpace = [-1,-1]
+    if PlayerMoveDirectionFVar.lower() == "left":
+        PlayerMapSpace = [CurrentPlayerSpaceFVar[0], CurrentPlayerSpaceFVar[1] - 1]
+    elif PlayerMoveDirectionFVar.lower() == "right":
+        PlayerMapSpace = [CurrentPlayerSpaceFVar[0], CurrentPlayerSpaceFVar[1] + 1]
+    elif PlayerMoveDirectionFVar.lower() == "up":
+        PlayerMapSpace = [CurrentPlayerSpaceFVar[0] - 1, CurrentPlayerSpaceFVar[1]]
+    elif PlayerMoveDirectionFVar.lower() == "down":
+        PlayerMapSpace = [CurrentPlayerSpaceFVar[0] + 1, CurrentPlayerSpaceFVar[1]]
+    if PlayerCanMoveInSpace(PlayerMapSpace, GameMapFVar):
+        return PlayerMapSpace
+    else:
+        print(f"The direction {PlayerMoveDirectionFVar} moves into the boundry of the cave or a wall please try again.")
+        return CurrentPlayerSpaceFVar
+    
 
 def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar, EnemyDefenseFVar, PlayerDefenseFVar, PlayerDefeatedFVar, EnemyDefeatedFVar):
     DamageAndCombatDoneListFVar = []
@@ -215,7 +130,7 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
         PlayerCombatDecision = str(input(f"Do you want to Attack, Defend, or dodge an attack? (To dodge an attack type Dodge) Also Your health is at {PlayerHealthFVar} The enemy's health is at {EnemyHealthFVar}: "))
         PlayerHasDoneCombatFVar = False
         PlayerHasDefendedFVar = False
-        if PlayerCombatDecision == "Attack":
+        if PlayerCombatDecision.lower() == "attack":
             EnemyDecision = random.randint(1, 6)
             if EnemyDecision >= 4:
                 EnemyDodgedAttack = random.randint(1, 10)
@@ -269,7 +184,7 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                     return DamageAndCombatDoneListFVar
             else:
                 print("An unexpected error has occurred please try again")
-        elif PlayerCombatDecision == "Defend":
+        elif PlayerCombatDecision.lower() == "defend":
             PlayerDodgedAttack = random.randint(1, 10)
             if PlayerDodgedAttack >= 3:
                 PlayerDamageReduction = EnemyDamageFVar - PlayerDefenseFVar
@@ -285,7 +200,7 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                 PlayerHasDefendedFVar = True
                 DamageAndCombatDoneListFVar.append(PlayerHasDefendedFVar)
                 return DamageAndCombatDoneListFVar
-        elif PlayerCombatDecision == "Dodge":
+        elif PlayerCombatDecision.lower() == "dodge":
             PlayerWasAbleToRunAway = random.randint(1, 2)
             if PlayerWasAbleToRunAway == 1:
                 PlayerHealthFVar -= EnemyDamageFVar
@@ -334,7 +249,7 @@ def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, Playe
         PlayerCombatDecision = str(input(f"Do you want to Attack, Defend, or dodge an attack? (To dodge an attack type Dodge) Also Your health is at {PlayerHealthFVar2} The Boss's health is at {EnemyHealthFVar2}"))
         PlayerHasDoneCombatFVar2 = False
         PlayerHasDefendedFVar2 = False
-        if PlayerCombatDecision == "Attack":
+        if PlayerCombatDecision.lower == "attack":
             FinalBossDecision = random.randint(1, 5)
             if FinalBossDecision <= 2:
                 FinalBossDodgedAttack = random.randint(1, 10)
@@ -366,7 +281,7 @@ def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, Playe
                 DamageAndCombatDoneListFVar2.append(PlayerHealthFVar2)
                 DamageAndCombatDoneListFVar2.append("Both")
                 return DamageAndCombatDoneListFVar2
-        elif PlayerCombatDecision == "Defense":
+        elif PlayerCombatDecision.lower == "defense":
             PlayerDodgedAttack = random.randint(1, 10)
             if PlayerDodgedAttack >= 3:
                 PlayerDamageReductionFVar = EnemyDamageFVar2 - PlayerDefenseFVar2
@@ -382,7 +297,7 @@ def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, Playe
                 PlayerHasDefendedFVar2 = True
                 DamageAndCombatDoneListFVar2.append(PlayerHasDefendedFVar2)
                 return DamageAndCombatDoneListFVar2
-        elif PlayerCombatDecision == "Dodge":
+        elif PlayerCombatDecision.lower == "dodge":
             PlayerWasAbleToRunAway = random.randint(1, 2)
             if PlayerWasAbleToRunAway == 1:
                 PlayerHealthFVar2 -= EnemyDamageFVar2
@@ -409,13 +324,9 @@ def FinalBossCombat(EnemyHealthFVar2, PlayerHealthFVar2, EnemyDamageFVar2, Playe
             return DamageAndCombatDoneListFVar2
 
 ChestList1 = ["", ""]
-
 ChestList2 = ["", ""]
-
 ChestList3 = ["", ""]
-
 ChestList4 = ["", ""]
-
 ChestList5 = ["", ""]
 
 def ChestOpener(CurrentPlayerSpaceFVar, ChestOpened):
@@ -462,23 +373,15 @@ def ChestOpener(CurrentPlayerSpaceFVar, ChestOpened):
             pass
 
 GameMapRow1 = [Space1, Space2, Space3, Space4, Space5]
-
 GameMapRow2 = [Space6, Space7, Space8, Space9, Space10]
-
 GameMapRow3 = [Space11, Space12, Space13, Space14, Space15]
-
 GameMapRow4 = [Space16, Space17, Space18, Space19, Space20]
-
 GameMapRow5 = [Space21, Space22, Space23, Space24, Space25]
 
 GameMapCollumn1 = [Space1, Space6, Space11, Space16, Space21]
-
 GameMapCollumn2 = [Space2, Space7, Space12, Space17, Space22]
-
 GameMapCollumn3 = [Space3, Space8, Space13, Space18, Space23]
-
 GameMapCollumn4 = [Space4, Space9, Space14, Space19, Space24]
-
 GameMapCollumn5 = [Space5, Space10, Space15, Space20, Space25]
 
 GameMap = [GameMapRow1, GameMapRow2, GameMapRow3, GameMapRow4, GameMapRow5]
@@ -486,19 +389,13 @@ GameMap = [GameMapRow1, GameMapRow2, GameMapRow3, GameMapRow4, GameMapRow5]
 CurrentPlayerSpace = [0, 0]
 
 PlayerMapSpace = ""
-
 PlayerKeyHolder = ""
 
 FirstChestOpened = False
-
 SecondChestOpened = False
-
 ThirdChestOpened = False
-
 FourthChestOpened = False
-
 FifthChestOpened = False
-
 PlayerDefeated = False
 
 print(f"You have been started at {CurrentPlayerSpace}!")
@@ -507,6 +404,15 @@ loop_num = 0
 while True:
     loop_num += 1
     print(f'Game Loop {loop_num}')
+
+    GameMapRow1 = [Space1, Space2, Space3, Space4, Space5]
+    GameMapRow2 = [Space6, Space7, Space8, Space9, Space10]
+    GameMapRow3 = [Space11, Space12, Space13, Space14, Space15]
+    GameMapRow4 = [Space16, Space17, Space18, Space19, Space20]
+    GameMapRow5 = [Space21, Space22, Space23, Space24, Space25]
+
+    GameMap = [GameMapRow1, GameMapRow2, GameMapRow3, GameMapRow4, GameMapRow5]
+
     if EquippedItem == "Stick":
         WeaponStatDamage = 1
     elif EquippedItem == "Sword":
@@ -529,6 +435,7 @@ while True:
         if FirstChestOpened == False:
             PlayerStatPoints += ChestList1[0]
             FirstChestOpened = ChestList1[1]
+            Space21 = "Space21"
         elif FirstChestOpened == True:
             pass
     elif CurrentPlayerSpace == "Chest2":
@@ -536,6 +443,7 @@ while True:
         if SecondChestOpened == False:
             PlayerStatPoints += ChestList2[0]
             SecondChestOpened = ChestList2[1]
+            Space23 = "Space23"
         if SecondChestOpened == True:
             pass
     elif CurrentPlayerSpace == "Chest3":
@@ -543,6 +451,7 @@ while True:
         if ThirdChestOpened == False:
             PlayerStatPoints += ChestList3[0]
             ThirdChestOpened = ChestList3[1]
+            Space15 = "Space15"
         if ThirdChestOpened == True:
             pass
     elif CurrentPlayerSpace == "Chest4":
@@ -550,6 +459,7 @@ while True:
         if FourthChestOpened == False:
             PlayerStatPoints += ChestList4[0]
             FourthChestOpened = ChestList4[1]
+            Space5 = "Space5"
         if FourthChestOpened == True:
             pass
     elif CurrentPlayerSpace == "Chest5":
@@ -557,19 +467,23 @@ while True:
         if FifthChestOpened == False:
             InventoryList.append(ChestList5[0])
             FifthChestOpened = ChestList5[1]
+            Space13 = "Space13"
         if FifthChestOpened == True:
             pass
     
-    PlayerDecision = str(input(f"Do you want to move, check your inventory or check / use your stats?? (Type Move for movement, Inventory for inventory checking, and Stats for Stats checking / using them) Also you are at {CurrentPlayerSpace}: "))
+    PlayerDecision = str(input(f"Do you want to move, check your inventory or check / use your stats?? (Type Move and also the direction you want to move with a space in between for movement, Inventory for inventory checking, and Stats for Stats checking / using them) Also you are at {CurrentPlayerSpace}: "))
 
-    if PlayerDecision == "Move":
-        SpacePlayerIsMovingTo = str(input("Which space do you want to move to?: "))
-        CurrentPlayerSpace = Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace)
-        print(f"You have moved to {CurrentPlayerSpace}!")
-    elif PlayerDecision == "Inventory":
+    PlayerDecision.slpit()
+
+    if PlayerDecision[0].lower == "move":
+        PlayerMoveDirection = PlayerDecision[1]
+        CurrentPlayerSpace = Movement(PlayerMoveDirection, CurrentPlayerSpace)
+        PlayerMapSpace = GetMapSpace(CurrentPlayerSpace, GameMap)
+        print(f"You have moved to {PlayerMapSpace}!")
+    elif PlayerDecision[0].lower == "inventory":
         while True:
             PlayerInventoryAction = str(input("Do you want to swap the item you currently have, Exit your inventory, or Put away an item? (Say Swap to swap your stick and the item you will get, Store to store an item, and Exit to exit the inventory (You need to store items to swap them or you can just store the stick and it will swap to the other item)): "))
-            if PlayerInventoryAction == "Swap":
+            if PlayerInventoryAction.lower == "swap":
                 if InventoryList != []:
                     PlayerSwapAction = str(input("What item do you want to swap?: "))
                     if PlayerSwapAction == "Sword":
@@ -608,7 +522,7 @@ while True:
                 elif InventoryList == []:
                     print("You can't swap anything you don't have anything in your inventory.")
                     continue
-            elif PlayerInventoryAction == "Store":
+            elif PlayerInventoryAction.lower == "store":
                     PlayerStoreAction = str(input("What do you want to store?: "))
                     if InventoryList == []:
                         if PlayerStoreAction == "Sword":
@@ -636,19 +550,19 @@ while True:
                     elif InventoryList != []:
                         print("You already have stuff stored in there you don't need to store your equipped weapon along with it!")
                         continue
-            elif PlayerInventoryAction == "Exit":
+            elif PlayerInventoryAction.lower() == "exit":
                 print("Hope you had a succesfull inventory use!")
                 break
-    elif PlayerDecision == "Stats":
+    elif PlayerDecision[0].lower == "stats":
         while True:
             PlayerStatAction = str(input(f"Do you want to check your stats, use your stat points, or exit your stats? (To check stats type Stats, to use stat points type Points, to exit type Exit) You currently have {PlayerStatPoints} Stat Points: "))
-            if PlayerStatAction == "Stats":
+            if PlayerStatAction.lower == "stats":
                 print(f"These are your current stats Health is {PlayerStatHealth}, Damage is {PlayerStatDamage}, and Defense is {PlayerStatDefense}.")
-            elif PlayerStatAction == "Points":
+            elif PlayerStatAction.lower == "points":
                 if PlayerStatPoints > 0:
                         PlayerStatDecision = str(input(f"What stat do you want to add to? Also you currently have This many stat points {PlayerStatPoints}. (Type Damage for damage, Health for health, and Defense for defense): "))
-                        if PlayerStatDecision == "Damage":
-                            print("How much do you want to add to Damage?")
+                        if PlayerStatDecision.lower == "damage":
+                            print(f"How much do you want to add to Damage? You have {PlayerStatPoints} Points")
                             DamagePointAdd = int(input("Number: "))
                             if DamagePointAdd > PlayerStatPoints:
                                 print("You can't add more points than you have! Please Decide the number of points you want to add again.")
@@ -662,7 +576,7 @@ while True:
                                 PlayerStatPoints -= DamagePointAdd
                                 print(f"You have successfully added {DamagePointAdd} points to damage!")
                                 DamagePointAdd = 0
-                        if PlayerStatDecision == "Health":
+                        if PlayerStatDecision.lower == "health":
                             print("How much do you want to add to Health?")
                             HealthPointAdd = int(input("Number: "))
                             if HealthPointAdd > PlayerStatPoints:
@@ -677,7 +591,7 @@ while True:
                                 PlayerStatPoints -= HealthPointAdd
                                 print(f"You have successfully added {HealthPointAdd} points to health!")
                                 HealthPointAdd = 0
-                        if PlayerStatDecision == "Defense":
+                        if PlayerStatDecision.lower == "defense":
                             print("How much do you want to add to Defense?")
                             DefensePointAdd = int(input("Number: "))
                             if DefensePointAdd > PlayerStatPoints:
@@ -692,7 +606,7 @@ while True:
                                 PlayerStatPoints -= DefensePointAdd
                                 print(f"You have successfully added {DefensePointAdd} points to defense!")
                                 DefensePointAdd = 0
-            elif PlayerStatAction == "Exit":
+            elif PlayerStatAction.lower == "exit":
                 print("Hope you had a succesful time using stats!")
                 break
     if CurrentPlayerSpace == "Enemy1":
@@ -725,6 +639,7 @@ while True:
                         FirstEnemyDefeated = True
                         print("You have successfully defeated Enemy1! and gained 8 stat points because of it!")
                         PlayerStatPoints += 8
+                        Space2 = "Space2"
                         break
                     elif DamageAndCombatDoneList[1] == "Player Dead":
                         print("You have sadly been defeated by Enemy1")
@@ -760,6 +675,7 @@ while True:
                         SecondEnemyDefeated = True
                         print("You have successfully defeated Enemy2!")
                         PlayerStatPoints += 8
+                        Space17 = "Space17"
                         break
                     elif DamageAndCombatDoneList[1] == "Player Dead":
                         PlayerDefeated = True
@@ -795,6 +711,7 @@ while True:
                         ThirdEnemyDefeated = True
                         print("You have successfully defeated Enemy3!")
                         PlayerStatPoints += 8
+                        Space19 = "Space19"
                         break
                     elif DamageAndCombatDoneList[1] == "Player Dead":
                         print("You have sadly been defeated by Enemy3")
@@ -830,6 +747,7 @@ while True:
                         print("You have successfully defeated The Final Boss and got the exit key!!!")
                         PlayerKeyHolder = "Key"
                         FinalBossDefeated = True
+                        Space25 = "Space25"
                         break
                     elif DamageAndCombatDoneList[1] == "Player Dead":
                         print("You have sadly been defeated by The Final Boss.")
