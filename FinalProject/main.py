@@ -120,6 +120,15 @@ FinalBossDefeated = False
 
 EnemyDecision = 0
 
+def GetMapSpace(CurrentPlayerSpaceFVar2, GameMapFVar):
+    SpecificList = []
+    MapSpace = ""
+    for x in GameMapFVar:
+        SpecificList = x[CurrentPlayerSpaceFVar2[0]]
+        for y in SpecificList:
+            MapSpace = y[CurrentPlayerSpaceFVar2[1]]
+    return MapSpace
+
 def Movement(PlayerMovementDirectionFVar, CurrentPlayerSpaceFVar):
     if PlayerMovementDirectionFVar == "Left":
         if CurrentPlayerSpaceFVar == [1, 2]:
@@ -141,32 +150,46 @@ def Movement(PlayerMovementDirectionFVar, CurrentPlayerSpaceFVar):
                 print("You can't move left anymore you reached the wall of the cave.")
     elif PlayerMovementDirectionFVar == "Right":
         if CurrentPlayerSpaceFVar == [1, 2]:
-            print("You can't move to the left there's a wall right there.")
+            print("You can't move to the right there's a wall right there.")
         elif CurrentPlayerSpaceFVar == [2, 2]:
-            print("You can't move to the left there's a wall right there.")
+            print("You can't move to the right there's a wall right there.")
         elif CurrentPlayerSpaceFVar == [4, 2]:
-            print("You can't move to the left there's a wall right there.")
+            print("You can't move to the right there's a wall right there.")
         elif CurrentPlayerSpaceFVar == [1, 0]:
-            print("You can't move to the left there's a wall right there.")
+            print("You can't move to the right there's a wall right there.")
         elif CurrentPlayerSpaceFVar == [2, 0]:
-            print("You can't move to the left there's a wall right there.")
+            print("You can't move to the right there's a wall right there.")
         elif CurrentPlayerSpaceFVar == [4, 0]:
-            print("You can't move to the left there's a wall right there.")
+            print("You can't move to the right there's a wall right there.")
         else:
             if CurrentPlayerSpaceFVar[1] < 4:
                 CurrentPlayerSpaceFVar[1] -= 1
             elif CurrentPlayerSpaceFVar == 4:
                 print("You can't move right anymore you reached the wall of the cave.")
     elif PlayerMovementDirectionFVar == "Up":
-        if CurrentPlayerSpaceFVar[0] > 0:
-            CurrentPlayerSpaceFVar[0] -= 1
-        elif CurrentPlayerSpaceFVar == 0:
-            print("You can't move Up anymore you reached the wall of the cave.")
+        if CurrentPlayerSpaceFVar == [3, 1]:
+            print("You can't move up there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [3, 3]:
+            print("You can't move up there's a wall right there.")
+        else:
+            if CurrentPlayerSpaceFVar[0] > 0:
+                CurrentPlayerSpaceFVar[0] -= 1
+            elif CurrentPlayerSpaceFVar == 0:
+                print("You can't move up anymore you reached the wall of the cave.")
     elif PlayerMovementDirectionFVar == "Down":
-        if CurrentPlayerSpaceFVar[0] < 4:
-            CurrentPlayerSpaceFVar[0] += 1
-        elif CurrentPlayerSpaceFVar == 4:
-            print("You can't move left anymore you reached the wall of the cave.")
+        if CurrentPlayerSpaceFVar == [3, 1]:
+            print("You can't move down there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [3, 3]:
+            print("You can't move down there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [0, 1]:
+            print("You can't move down there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [0, 3]:
+            print("You can't move down there's a wall right there.")
+        else:
+            if CurrentPlayerSpaceFVar[0] < 4:
+                CurrentPlayerSpaceFVar[0] += 1
+            elif CurrentPlayerSpaceFVar == 4:
+                print("You can't move down anymore you reached the wall of the cave.")
 
 
 def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar, EnemyDefenseFVar, PlayerDefenseFVar, PlayerDefeatedFVar, EnemyDefeatedFVar):
