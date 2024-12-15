@@ -108,23 +108,26 @@ def Movement(PlayerMoveDirectionFVar, CurrentPlayerSpaceFVar, GameMapFVar):
     
 
 def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar, EnemyDefenseFVar, PlayerDefenseFVar, PlayerDefeatedFVar, EnemyDefeatedFVar):
-    DamageAndCombatDoneListFVar = []
+    DamageAndCombatDoneListFVar = [None, None, None, None]
     PlayerHasDoneCombatFVar = False
+    print(EnemyHealthFVar)
+    print(PlayerHealthFVar)
+    print(DamageAndCombatDoneListFVar)
     if EnemyHealthFVar <= 0:
         EnemyDefeatedFVar = "Enemy Dead"
     elif PlayerHealthFVar <= 0:
         PlayerDefeatedFVar = "Player Dead"
     if EnemyDefeatedFVar == "Enemy Dead":
         PlayerHasDoneCombatFVar = True
-        DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-        DamageAndCombatDoneListFVar.append(EnemyDefeatedFVar)
-        DamageAndCombatDoneListFVar.append("Player")
+        DamageAndCombatDoneListFVar[0] = PlayerHasDoneCombatFVar
+        DamageAndCombatDoneListFVar[1] = EnemyDefeatedFVar
+        DamageAndCombatDoneListFVar[2] = "Player"
         return DamageAndCombatDoneListFVar
     elif PlayerDefeatedFVar == "Player Dead":
         PlayerHasDoneCombatFVar = True
-        DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-        DamageAndCombatDoneListFVar.append(PlayerDefeatedFVar)
-        DamageAndCombatDoneListFVar.append("Enemy")
+        DamageAndCombatDoneListFVar[0] = PlayerHasDoneCombatFVar
+        DamageAndCombatDoneListFVar[1] = PlayerDefeatedFVar
+        DamageAndCombatDoneListFVar[2] = "Enemy"
         return DamageAndCombatDoneListFVar
     elif EnemyDefeatedFVar != "Enemy Dead" and PlayerDefeatedFVar != "Player Dead":
         PlayerCombatDecision = str(input(f"Do you want to Attack, Defend, or dodge an attack? (To dodge an attack type Dodge) Also Your health is at {PlayerHealthFVar} The enemy's health is at {EnemyHealthFVar}: "))
@@ -132,26 +135,26 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
         PlayerHasDefendedFVar = False
         if PlayerCombatDecision.lower() == "attack":
             EnemyDecision = random.randint(1, 6)
-            if EnemyDecision >= 4:
+            if EnemyDecision <= 2:
                 EnemyDodgedAttack = random.randint(1, 10)
                 if EnemyDodgedAttack <= 2:
                     print("The enemy dodged the attack.")
                     PlayerHasDoneCombatFVar = True
-                    DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-                    DamageAndCombatDoneListFVar.append(EnemyHealthFVar)
-                    DamageAndCombatDoneListFVar.append(PlayerHealthFVar)
-                    DamageAndCombatDoneListFVar.append("Ran Away")
+                    DamageAndCombatDoneListFVar[0] = PlayerHasDoneCombatFVar
+                    DamageAndCombatDoneListFVar[1] = EnemyHealthFVar
+                    DamageAndCombatDoneListFVar[2] = PlayerHealthFVar
+                    DamageAndCombatDoneListFVar[3] = "Ran Away"
                     return DamageAndCombatDoneListFVar
                 elif EnemyDodgedAttack >= 3:
                     EnemyDamageReduction = PlayerDamageFVar - EnemyDefenseFVar
                     EnemyHealthFVar -= EnemyDamageReduction
                     print(f"The enemy has defended but you have still hit the enemy for {EnemyDamageReduction} damage and the enemy now has {EnemyHealthFVar} health!")
                     PlayerHasDoneCombatFVar = True
-                    DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-                    DamageAndCombatDoneListFVar.append(EnemyHealthFVar)
-                    DamageAndCombatDoneListFVar.append("Enemy")
+                    DamageAndCombatDoneListFVar[0] = PlayerHasDoneCombatFVar
+                    DamageAndCombatDoneListFVar[1] = EnemyHealthFVar
+                    DamageAndCombatDoneListFVar[2] = "Enemy"
                     return DamageAndCombatDoneListFVar
-            elif EnemyDecision <= 2:
+            elif EnemyDecision >= 4:
                 EnemyHealthFVar -= PlayerDamageFVar
                 EnemyHealthFVar = max(EnemyHealthFVar, 0)
                 print(f"You have hit the enemy for {PlayerDamageFVar} damage and the enemy now has {EnemyHealthFVar} health!")
@@ -162,10 +165,10 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                     PlayerHealthFVar = max(PlayerHealthFVar, 0)
                     print(f"The enemy has hit you for {EnemyDamageFVar} damage and you now have {PlayerHealthFVar} health.")
                 PlayerHasDoneCombatFVar = True
-                DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-                DamageAndCombatDoneListFVar.append(EnemyHealthFVar)
-                DamageAndCombatDoneListFVar.append(PlayerHealthFVar)
-                DamageAndCombatDoneListFVar.append("Both")
+                DamageAndCombatDoneListFVar[0] = PlayerHasDoneCombatFVar
+                DamageAndCombatDoneListFVar[1] = EnemyHealthFVar
+                DamageAndCombatDoneListFVar[2] = PlayerHealthFVar
+                DamageAndCombatDoneListFVar[3] = "Both"
                 return DamageAndCombatDoneListFVar
             elif EnemyDecision == 3:
                 EnemyWasAbleToRunAwayFVar = random.randint(1, 2)
@@ -173,18 +176,18 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                     EnemyHealthFVar -= PlayerDamageFVar
                     print(f"You have hit the enemy for {PlayerDamageFVar} damage and the enemy now has {EnemyHealthFVar} health!")
                     PlayerHasDoneCombatFVar = True
-                    DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-                    DamageAndCombatDoneListFVar.append(EnemyHealthFVar)
-                    DamageAndCombatDoneListFVar.append("Enemy")
+                    DamageAndCombatDoneListFVar[0] = PlayerHasDoneCombatFVar
+                    DamageAndCombatDoneListFVar[1] = EnemyHealthFVar
+                    DamageAndCombatDoneListFVar[2] = "Enemy"
                     return DamageAndCombatDoneListFVar
                 elif EnemyWasAbleToRunAwayFVar == 2:
                     print("The enemy dodged the attack.")
                     EnemyRanAway = "Ran Away"
                     PlayerHasDoneCombatFVar = True
-                    DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-                    DamageAndCombatDoneListFVar.append(EnemyHealthFVar)
-                    DamageAndCombatDoneListFVar.append(PlayerHealthFVar)
-                    DamageAndCombatDoneListFVar.append(EnemyRanAway)
+                    DamageAndCombatDoneListFVar[0] = PlayerHasDoneCombatFVar
+                    DamageAndCombatDoneListFVar[1] = EnemyHealthFVar
+                    DamageAndCombatDoneListFVar[2] = PlayerHealthFVar
+                    DamageAndCombatDoneListFVar[3] = EnemyRanAway
                     return DamageAndCombatDoneListFVar
             else:
                 print("An unexpected error has occurred please try again")
@@ -195,9 +198,9 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                 PlayerHealthFVar -= PlayerDamageReduction
                 print(f"You have successfully defended and the enemy only did {PlayerDamageReduction} damage! and you now have {PlayerHealthFVar} health.")
                 PlayerHasDefendedFVar = True
-                DamageAndCombatDoneListFVar.append(PlayerHasDefendedFVar)
-                DamageAndCombatDoneListFVar.append(PlayerHealthFVar)
-                DamageAndCombatDoneListFVar.append("Player")
+                DamageAndCombatDoneListFVar[0] = PlayerHasDefendedFVar
+                DamageAndCombatDoneListFVar[1] = PlayerHealthFVar
+                DamageAndCombatDoneListFVar[2] = "Player"
                 return DamageAndCombatDoneListFVar
             elif PlayerDodgedAttack <= 2:
                 print("You dodged their attack!")
@@ -210,18 +213,18 @@ def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar,
                 PlayerHealthFVar -= EnemyDamageFVar
                 print(f"You have failed to Dodge and the enemy has hit you for {EnemyDamageFVar} damage. and you now have {PlayerHealthFVar} health.")
                 PlayerHasDoneCombatFVar = True
-                DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-                DamageAndCombatDoneListFVar.append(PlayerHealthFVar)
-                DamageAndCombatDoneListFVar.append("Player")
+                DamageAndCombatDoneListFVar[0] = PlayerHasDoneCombatFVar
+                DamageAndCombatDoneListFVar[1] = PlayerHealthFVar
+                DamageAndCombatDoneListFVar[2] = "Player"
                 return DamageAndCombatDoneListFVar
             elif PlayerWasAbleToRunAway == 2:
                 print("You have successfully Dodged!")
                 PlayerRanAway = "Ran Away"
                 PlayerHasDoneCombatFVar = True
-                DamageAndCombatDoneListFVar.append(PlayerHasDoneCombatFVar)
-                DamageAndCombatDoneListFVar.append(EnemyHealthFVar)
-                DamageAndCombatDoneListFVar.append(PlayerHealthFVar)
-                DamageAndCombatDoneListFVar.append(PlayerRanAway)
+                DamageAndCombatDoneListFVar[0] = PlayerHasDoneCombatFVar
+                DamageAndCombatDoneListFVar[1] = EnemyHealthFVar
+                DamageAndCombatDoneListFVar[2] = PlayerHealthFVar
+                DamageAndCombatDoneListFVar[3] = PlayerRanAway
                 return DamageAndCombatDoneListFVar
         else:
             print("Unexpected Error try again.")
@@ -405,7 +408,7 @@ ThirdChestOpened = False
 FourthChestOpened = False
 FifthChestOpened = False
 PlayerDefeated = False
-PlayerHealth = PlayerStatHealth
+PlayerHealth = int(PlayerStatHealth)
 
 print(f"You have been started at {GetMapSpace(CurrentPlayerSpace, GameMap)}!")
 
@@ -563,7 +566,7 @@ while True:
                                 HealthPointAdd = int(input("Number: "))
                                 PlayerStatHealth += HealthPointAdd
                                 PlayerStatPoints -= HealthPointAdd
-                                PlayerHealth = PlayerStatHealth
+                                PlayerHealth = int(PlayerStatHealth)
                                 print(f"You have successfully added {HealthPointAdd} points to health!")
                                 HealthPointAdd = 0
                             elif HealthPointAdd <= PlayerStatPoints:
@@ -598,6 +601,7 @@ while True:
             print("You encountered Enemy number 1! Time to fight them.")
             while True:
                 while DamageAndCombatDoneList[1] != "Enemy Dead" and DamageAndCombatDoneList[1] != "Player Dead":
+                    print(f"ENEMY 1 BUG: PlayerHealth = {PlayerHealth}")
                     DamageAndCombatDoneList = Combat(FirstEnemyHealth, PlayerHealth, FirstEnemyDamage, PlayerDamage, FirstEnemyDefense, PlayerDefense, PlayerDefeated, FirstEnemyDefeated)
                     if DamageAndCombatDoneList[0] != True:
                         continue
@@ -633,14 +637,16 @@ while True:
                 elif PlayerDefeated == True:
                     PlayerDefeated = False
                     CurrentPlayerSpace = [0, 0]
-                    PlayerHealth = PlayerStatHealth
+                    PlayerHealth = int(PlayerStatHealth)
                     break
     elif GetMapSpace(CurrentPlayerSpace, GameMap) == "Enemy2":
         if SecondEnemyDefeated == False:
             print("You encountered Enemy number 2! Time to fight them.")
             while True:
                 while DamageAndCombatDoneList[1] != "Enemy Dead" and DamageAndCombatDoneList[1] != "Player Dead":
+                    print(f'ENEMY 2 BUG: DamageAndCombatDoneList Before = {DamageAndCombatDoneList}')
                     DamageAndCombatDoneList = Combat(SecondEnemyHealth, PlayerHealth, SecondEnemyDamage, PlayerDamage, SecondEnemyDefense, PlayerDefense, PlayerDefeated, SecondEnemyDefeated)
+                    print(f'ENEMY 2 BUG: DamageAndCombatDoneList After = {DamageAndCombatDoneList}')
                     if DamageAndCombatDoneList[0] != True:
                         continue
                     elif DamageAndCombatDoneList[0] == True:
@@ -670,7 +676,7 @@ while True:
                 elif PlayerDefeated == True:
                     PlayerDefeated = False
                     CurrentPlayerSpace = [0, 0]
-                    PlayerHealth = PlayerStatHealth
+                    PlayerHealth = int(PlayerStatHealth)
                     break
     elif GetMapSpace(CurrentPlayerSpace, GameMap) == "Enemy3":
         if ThirdEnemyDefeated == False:
@@ -707,7 +713,7 @@ while True:
                 elif PlayerDefeated == True:
                     PlayerDefeated = False
                     CurrentPlayerSpace = [0, 0]
-                    PlayerHealth = PlayerStatHealth
+                    PlayerHealth = int(PlayerStatHealth)
                     break
     elif GetMapSpace(CurrentPlayerSpace, GameMap) == "FinalBoss":
         if FinalBossDefeated == False and FirstEnemyDefeated == True and SecondEnemyDefeated == True and ThirdEnemyDefeated == True:
@@ -744,5 +750,5 @@ while True:
                 elif PlayerDefeated == True:
                     PlayerDefeated = False
                     CurrentPlayerSpace = [0, 0]
-                    PlayerHealth = PlayerStatHealth
+                    PlayerHealth = int(PlayerStatHealth)
                     break
