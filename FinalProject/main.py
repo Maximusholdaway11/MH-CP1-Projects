@@ -4,7 +4,17 @@ print("This is my adventure game, have a good time!")
 
 print("For movement simply choose a space that you are right next to. Also walls will block you when trying to move.")
 
-print("At times the health for both you and the enemy can be negative that also means you or the enemy were defeated same with 0.")
+print("The Stick gives you a +1 attack bonus and the other item you may get gives a +4 in attack bonus.")
+
+print("You start with your weapon being the stick.")
+
+print("You don't start with anything in your inventory.")
+
+print("The weapon you can get will automatically go into your inventory after you collect it.")
+
+print("")
+
+print("You have been trapped in a cave and you need to get the key from the Boss to escape!")
 
 import random as random
 
@@ -68,13 +78,9 @@ PlayerHasDoneCombat = False
 
 PlayerHasDefended = False
 
-PlayerStartingHealth = 11
-
 EquippedItem = "Stick"
 
-ItemBelt = ["Stick"]
-
-PlayerStatHealth = 1
+PlayerStatHealth = 6
 
 PlayerStatDamage = 1
 
@@ -114,393 +120,54 @@ FinalBossDefeated = False
 
 EnemyDecision = 0
 
-def Movement(SpacePlayerIsMovingTo, CurrentPlayerSpace):
-    if CurrentPlayerSpace == "Exit/Start":
-        if SpacePlayerIsMovingTo == "Enemy1":
-            CurrentPlayerSpace = "Enemy1"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space6":
-            CurrentPlayerSpace = "Space6"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall4":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
+def Movement(PlayerMovementDirectionFVar, CurrentPlayerSpaceFVar):
+    if PlayerMovementDirectionFVar == "Left":
+        if CurrentPlayerSpaceFVar == [1, 2]:
+            print("You can't move to the left there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [2, 2]:
+            print("You can't move to the left there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [4, 2]:
+            print("You can't move to the left there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [1, 4]:
+            print("You can't move to the left there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [2, 4]:
+            print("You can't move to the left there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [4, 4]:
+            print("You can't move to the left there's a wall right there.")
         else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Enemy1":
-        if SpacePlayerIsMovingTo == "Exit/Start":
-            CurrentPlayerSpace = "Exit/Start"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space6":
-            CurrentPlayerSpace = "Space6"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall4":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space3":
-            CurrentPlayerSpace = "Space3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space8":
-            CurrentPlayerSpace = "Space8"
-            return CurrentPlayerSpace
+            if CurrentPlayerSpaceFVar[1] > 0:
+                CurrentPlayerSpaceFVar[1] += 1
+            elif CurrentPlayerSpaceFVar == 0:
+                print("You can't move left anymore you reached the wall of the cave.")
+    elif PlayerMovementDirectionFVar == "Right":
+        if CurrentPlayerSpaceFVar == [1, 2]:
+            print("You can't move to the left there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [2, 2]:
+            print("You can't move to the left there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [4, 2]:
+            print("You can't move to the left there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [1, 0]:
+            print("You can't move to the left there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [2, 0]:
+            print("You can't move to the left there's a wall right there.")
+        elif CurrentPlayerSpaceFVar == [4, 0]:
+            print("You can't move to the left there's a wall right there.")
         else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Space3":
-        if SpacePlayerIsMovingTo == "Enemy1":
-            CurrentPlayerSpace = "Enemy1"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space4":
-            CurrentPlayerSpace = "Space4"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall4":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall1":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space8":
-            CurrentPlayerSpace = "Space8"
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Space4":
-        if SpacePlayerIsMovingTo == "Space3":
-            CurrentPlayerSpace = "Space3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest4":
-            CurrentPlayerSpace = "Chest4"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall1":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space8":
-            CurrentPlayerSpace = "Space8"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space10":
-            CurrentPlayerSpace = "Space10"
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Chest4":
-        if SpacePlayerIsMovingTo == "Space10":
-            CurrentPlayerSpace = "Space10"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space11":
-            CurrentPlayerSpace = "Space11"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall1":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Space6":
-        if SpacePlayerIsMovingTo == "Exit/Start":
-            CurrentPlayerSpace = "Exit/Start"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy1":
-            CurrentPlayerSpace = "Enemy1"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall4":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space11":
-            CurrentPlayerSpace = "Space11"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall6":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Space8":
-        if SpacePlayerIsMovingTo == "Space4":
-            CurrentPlayerSpace = "Space4"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall6":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall4":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space3":
-            CurrentPlayerSpace = "Space3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy1":
-            CurrentPlayerSpace = "Enemy1"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest5":
-            CurrentPlayerSpace = "Chest5"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall1":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall2":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Space10":
-        if SpacePlayerIsMovingTo == "Chest4":
-            CurrentPlayerSpace = "Chest4"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall1":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall2":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest3":
-            CurrentPlayerSpace = "Chest3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space4":
-            CurrentPlayerSpace = "Space4"
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Space11":
-        if SpacePlayerIsMovingTo == "Space6":
-            CurrentPlayerSpace = "Space6"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall4":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall6":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy2":
-            CurrentPlayerSpace = "Enemy2"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space16":
-            CurrentPlayerSpace = "Space16"
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Chest5":
-        if SpacePlayerIsMovingTo == "Space8":
-            CurrentPlayerSpace = "Space8"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall6":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall4":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy3":
-            CurrentPlayerSpace = "Enemy3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy2":
-            CurrentPlayerSpace = "Enemy2"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space18":
-            CurrentPlayerSpace = "Space18"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall1":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall2":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Chest3":
-        if SpacePlayerIsMovingTo == "Space10":
-            CurrentPlayerSpace = "Space10"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall2":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall1":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy3":
-            CurrentPlayerSpace = "Enemy3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space20":
-            CurrentPlayerSpace = "Space20"
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Space16":
-        if SpacePlayerIsMovingTo == "Enemy2":
-            CurrentPlayerSpace = "Enemy2"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall5":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall6":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space11":
-            CurrentPlayerSpace = "Space11"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest1":
-            CurrentPlayerSpace = "Chest1"
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Enemy2":
-        if SpacePlayerIsMovingTo == "Chest5":
-            CurrentPlayerSpace = "Chest5"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall6":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall5":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space11":
-            CurrentPlayerSpace = "Space11"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest2":
-            CurrentPlayerSpace = "Chest2"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space18":
-            CurrentPlayerSpace = "Space18"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space16":
-            CurrentPlayerSpace = "Space16"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest1":
-            CurrentPlayerSpace = "Chest1"
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Space18":
-        if SpacePlayerIsMovingTo == "Enemy2":
-            CurrentPlayerSpace = "Enemy2"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest5":
-            CurrentPlayerSpace = "Chest5"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall2":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy3":
-            CurrentPlayerSpace = "Enemy3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall3":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest2":
-            CurrentPlayerSpace = "Chest2"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall6":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall5":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Enemy3":
-        if SpacePlayerIsMovingTo == "Space18":
-            CurrentPlayerSpace = "Space18"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall2":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall3":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "FinalBoss":
-            CurrentPlayerSpace = "FinalBoss"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy2":
-            CurrentPlayerSpace = "Enemy2"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest2":
-            CurrentPlayerSpace = "Chest2"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest3":
-            CurrentPlayerSpace = "Chest3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space20":
-            CurrentPlayerSpace = "Space20"
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Space20":
-        if SpacePlayerIsMovingTo == "FinalBoss":
-            CurrentPlayerSpace = "FinalBoss"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall2":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall3":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy3":
-            CurrentPlayerSpace = "Enemy3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Chest3":
-            CurrentPlayerSpace = "Chest3"
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Chest1":
-        if SpacePlayerIsMovingTo == "Enemy2":
-            CurrentPlayerSpace = "Enemy2"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space16":
-            CurrentPlayerSpace = "Space16"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall5":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "Chest2":
-        if SpacePlayerIsMovingTo == "Space18":
-            CurrentPlayerSpace = "Space18"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall5":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall3":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy3":
-            CurrentPlayerSpace = "Enemy3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Enemy2":
-            CurrentPlayerSpace = "Enemy2"
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    elif CurrentPlayerSpace == "FinalBoss":
-        if SpacePlayerIsMovingTo == "Enemy3":
-            CurrentPlayerSpace = "Enemy3"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Space20":
-            CurrentPlayerSpace = "Space20"
-            return CurrentPlayerSpace
-        elif SpacePlayerIsMovingTo == "Wall3":
-            print("Can't move there it's a wall.")
-            return CurrentPlayerSpace
-        else:
-            print("Unexpected Error try again.")
-            return CurrentPlayerSpace
-    else:
-        print("Unexpected Error Has Occurred Please Try Again You have been sent to the starting place.")
-        CurrentPlayerSpace = "Exit/Start"
-        return CurrentPlayerSpace
+            if CurrentPlayerSpaceFVar[1] < 4:
+                CurrentPlayerSpaceFVar[1] -= 1
+            elif CurrentPlayerSpaceFVar == 4:
+                print("You can't move right anymore you reached the wall of the cave.")
+    elif PlayerMovementDirectionFVar == "Up":
+        if CurrentPlayerSpaceFVar[0] > 0:
+            CurrentPlayerSpaceFVar[0] -= 1
+        elif CurrentPlayerSpaceFVar == 0:
+            print("You can't move Up anymore you reached the wall of the cave.")
+    elif PlayerMovementDirectionFVar == "Down":
+        if CurrentPlayerSpaceFVar[0] < 4:
+            CurrentPlayerSpaceFVar[0] += 1
+        elif CurrentPlayerSpaceFVar == 4:
+            print("You can't move left anymore you reached the wall of the cave.")
+
 
 def Combat(EnemyHealthFVar, PlayerHealthFVar, EnemyDamageFVar, PlayerDamageFVar, EnemyDefenseFVar, PlayerDefenseFVar, PlayerDefeatedFVar, EnemyDefeatedFVar):
     DamageAndCombatDoneListFVar = []
@@ -793,7 +460,9 @@ GameMapCollumn5 = [Space5, Space10, Space15, Space20, Space25]
 
 GameMap = [GameMapRow1, GameMapRow2, GameMapRow3, GameMapRow4, GameMapRow5]
 
-CurrentPlayerSpace = "Exit/Start"
+CurrentPlayerSpace = [0, 0]
+
+PlayerMapSpace = ""
 
 PlayerKeyHolder = ""
 
@@ -822,7 +491,7 @@ while True:
 
     DamageAndCombatDoneList = ["PlaceHolder1", "PlaceHolder2", "PlaceHolder3", "PlaceHolder4"]
     PlayerDamage = PlayerStatDamage + WeaponStatDamage
-    PlayerHealth = PlayerStartingHealth + PlayerStatHealth
+    PlayerHealth = PlayerStatHealth
     PlayerDefense = PlayerStatDefense
 
     for x in GameMap:
@@ -863,7 +532,7 @@ while True:
     elif CurrentPlayerSpace == "Chest5":
         ChestList5 = ChestOpener(CurrentPlayerSpace, FifthChestOpened)
         if FifthChestOpened == False:
-            ItemBelt.append(ChestList5[0])
+            InventoryList.append(ChestList5[0])
             FifthChestOpened = ChestList5[1]
         if FifthChestOpened == True:
             pass
@@ -880,7 +549,6 @@ while True:
             if PlayerInventoryAction == "Swap":
                 if InventoryList != []:
                     PlayerSwapAction = str(input("What item do you want to swap?: "))
-                    print(InventoryList)
                     if PlayerSwapAction == "Sword":
                         if EquippedItem == "Sword":
                             print("You can't swap out your sword for your sword.")
@@ -888,8 +556,6 @@ while True:
                         elif EquippedItem == "Stick":
                             EquippedItem = "Sword"
                             InventoryList.remove("Sword")
-                            ItemBelt.append("Sword")
-                            ItemBelt.remove("Stick")
                             print("You have succesfully swapped out your stick for your sword!")
                         elif EquippedItem == "Nothing":
                             EquippedItem = ("Sword")
@@ -920,51 +586,33 @@ while True:
                     print("You can't swap anything you don't have anything in your inventory.")
                     continue
             elif PlayerInventoryAction == "Store":
-                if len(ItemBelt) == 2:
                     PlayerStoreAction = str(input("What do you want to store?: "))
-                    if PlayerStoreAction == "Sword":
-                        if EquippedItem in ["Stick"]:
-                            if InventoryList not in ["Sword"]:
-                                ItemBelt.remove("Sword")
-                                InventoryList.append("Sword")
-                                print("You have successfully added your sword to your inventory!")
-                            elif InventoryList in ["Sword"]:
-                                print("You can't store your sword it's already in your inventory.")
-                        elif EquippedItem in ["Sword"]:
-                            ItemBelt.remove("Sword")
-                            InventoryList.append("Sword")
-                            EquippedItem = "Nothing"
-                            if InventoryList in ["Stick"]:
-                                InventoryList.remove("Stick")
-                                ItemBelt.append("Stick")
-                                EquippedItem = "Stick"
-                                print("You have succesfully added your sword to your inventory and equipped your stick!")
-                            elif ItemBelt in "Stick":
-                                EquippedItem = "Stick"
-                                print("You have succesfully added your sword to your inventory and equipped your stick!")
-                        elif EquippedItem in "Nothing":
-                            print("You can't store nothing.")
-                            continue
-                    elif PlayerStoreAction == "Stick":
-                        if EquippedItem in "Sword":
-                            if ItemBelt in "Stick":
-                                ItemBelt.remove("Stick")
-                                InventoryList.append("Stick")
-                                print("You have succesfully stored your stick!")
-                        elif EquippedItem in "Stick":
-                            ItemBelt.remove("Stick")
-                            InventoryList.append("Stick")
-                            EquippedItem = "Sword"
-                            print("You have successfully stored your stick and equipped your sword!")
-                        elif EquippedItem in "Nothing":
-                            print("You can't store nothing.")
-                            continue
-                elif len(ItemBelt) == 1 and ItemBelt not in ["Sword"]:
-                    print("You can't store anything you don't have anything other than your stick to store!")
-                    continue
-                elif len(ItemBelt) == 1 and ItemBelt not in ["Stick"]:
-                    print("You can't store anything you don't have anything other than your sword to store!")
-                    continue
+                    if InventoryList == []:
+                        if PlayerStoreAction == "Sword":
+                            if EquippedItem == "Sword":
+                                if "Stick" in InventoryList:
+                                    EquippedItem = "Stick"
+                                    InventoryList.append("Sword")
+                                    print("You have successfully stored your sword and equipped your stick!")
+                                elif "Stick" not in InventoryList:
+                                    print("Unexpected Error has occured please try again")
+                                    InventoryList.append("Stick")
+                                    continue
+                        elif PlayerStoreAction == "Stick":
+                            if EquippedItem == "Stick":
+                                if "Sword" in InventoryList:
+                                    EquippedItem = "Sword"
+                                    InventoryList.append("Stick")
+                                    print("You have successfully stored your stick and equipped your sword!")
+                                elif "Sword" not in InventoryList:
+                                    print("You don't want to store your stick when you don't have any other weapon!")
+                                    continue
+                            elif EquippedItem in "Sword":
+                                print("You don't even have your stick equipped!")
+                                continue
+                    elif InventoryList != []:
+                        print("You already have stuff stored in there you don't need to store your equipped weapon along with it!")
+                        continue
             elif PlayerInventoryAction == "Exit":
                 print("Hope you had a succesfull inventory use!")
                 break
