@@ -402,8 +402,8 @@ GameMapCollumn5 = [Space5, Space10, Space15, Space20, Space25]
 GameMap = [GameMapRow1, GameMapRow2, GameMapRow3, GameMapRow4, GameMapRow5]
 
 CurrentPlayerSpace = [0, 0]
-
 PlayerMapSpace = ""
+
 PlayerKeyHolder = ""
 
 FirstChestOpened = False
